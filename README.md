@@ -31,9 +31,36 @@ El proceso de limpieza incluyó las siguientes operaciones:
 
 ## Evidencia del proceso y capturas
 
-# Companiera ecilia
+En la pantalla principal se puede apreciar las primeras filas de nuestro dataset sin analizar, aparecen valores nulos, nombres con letras mayúsculas entre palabras, distintos formatos de fechas al igual que en la columna gasto.
+<p style="text-align: center;">
+  <img src="Tarea1/img/DatosOriginales_1.png" alt="Descripción de la imagen" width="700">
+</p>
 
+Además se muestra información relevante del dataset que se analizará, cuenta con 5000 filas y 7 columnas, sus encabezados y la cantidad de datos no nulos que poseen cada una.
+<p style="text-align: center;">
+  <img src="Tarea1/img/Informacion_2.png" alt="Descripción de la imagen" width="280">
+</p>
 
+En esta sección se puede ver a mayor detalle la cantidad de datos nulos que presenta cada columna siendo la de Gasto con 505 valores, en total se cuenta con 100 valores duplicados a lo largo de todo el dataset.
+<p style="text-align: center;">
+  <img src="Tarea1/img/valoresFaltantes_3.png" alt="Descripción de la imagen" width="170">
+</p>
+
+Demos una ultima vista del dataset antes de la limpieza, esta vez mostrando mas datos para ver su estado.
+<p style="text-align: center;">
+  <img src="Tarea1/img/AntesLimpieza_4.png" alt="Descripción de la imagen" width="600">
+</p>
+
+En este resultado ya se puede ver los datos con mayor claridad, mas ordenados, todos poseen un mismo formato, los nombres con su primer letra en mayúscula, fecha en un solo formato, gasto en decimales utilizando el punto.
+<p style="text-align: center;">
+  <img src="Tarea1/img/DespuesLimpieza_5.png" alt="Descripción de la imagen" width="600">
+</p>
+
+Por último en esta sección se tiene más detallado el proceso de limpieza se puede observar que a cada columna se muestra la cantidad de datos faltantes que tenia antes de la limpieza y la cantidad despues es 0 en cada una, asi como la conversion de tipos de datos segun corresponde a cada una.
+Se eliminaron los datos duplicados y por ultiom el nombre del archivo al cual fue exportado el dataset limpio.
+<p style="text-align: center;">
+  <img src="Tarea1/img/Resumen_6.png" alt="Descripción de la imagen" width="500">
+</p>
 ## Resumen de resultados
 
 | Indicador | Antes de la limpieza | Después de la limpieza |
@@ -46,7 +73,11 @@ El proceso de limpieza incluyó las siguientes operaciones:
 
 ## Interpretación de los resultados
 
-# Companiera Cecilia
+Después de completar todo el proceso, se pudo observar la importancia de mantener la homogeneidad de los datos, procurando que todos posean un mismo formato y tipo de dato, además de encontrarse completos, es decir, sin valores nulos y sobre todo sin registros repetidos.
+
+El proceso de limpieza de datos es fundamental, ya que permite transformar la información en un conjunto de datos más estructurado y manejable. Esto facilita su utilización en procesos posteriores y contribuye a obtener resultados más precisos y confiables.
+
+En el dataset utilizado se determinó que el nombre del cliente no representaba una variable relevante para el análisis realizado, por lo que se lleno con valor establecido por el analista.  
 
 ## Archivos Utilizados
 
