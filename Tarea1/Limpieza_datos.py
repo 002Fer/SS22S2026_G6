@@ -196,14 +196,14 @@ print("\n============================")
 print("ANTES DE LA LIMPIEZA")
 print("============================")
 
-print(df_before.head(10))
+print(df_before.head(20))
 
 
 print("\n============================")
 print("DESPUÉS DE LA LIMPIEZA")
 print("============================")
 
-print(df_after.head(10))
+print(df_after.head(20))
 
 
  

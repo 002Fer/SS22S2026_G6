@@ -1,4 +1,10 @@
 # Tarea 1: Limpieza y análisis inicial de datos con Python y Pandas
+| Nombre        | Carnet          |
+|---------------|--------------|
+| Gerson David Otoniel González Morales   | 202000774 |
+| Fernando Misael Morales Ortiz   | 202001950 |
+| María Cecilia Cotzajay López  | 201602659 |
+
 
 ## Nombre del dataset
 
