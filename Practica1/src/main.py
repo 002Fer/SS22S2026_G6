@@ -34,6 +34,18 @@ def crear_argumentos():
         help="Ruta donde se guardará el CSV limpio.",
     )
 
+    parser.add_argument(
+        "--cargar",
+        action="store_true",
+        help="Carga el DataFrame transformado en el modelo de SQL Server.",
+    )
+
+    parser.add_argument(
+        "--crear-esquema",
+        action="store_true",
+        help="Crea o verifica VuelosDW antes de cargar (implica --cargar).",
+    )
+
     return parser
 
 
@@ -82,6 +94,26 @@ def main():
 
         print("Archivo guardado correctamente.")
         print(f"Ruta: {args.salida}")
+
+        # 4. CARGA A SQL SERVER (opcional para permitir ejecutar solo la limpieza)
+
+        if args.cargar or args.crear_esquema:
+            from load import cargar_dataframe, ejecutar_script_creacion
+
+            print("\n[4] Cargando modelo multidimensional en SQL Server...")
+
+            if args.crear_esquema:
+                ejecutar_script_creacion()
+
+            resultado = cargar_dataframe(df_limpio)
+
+            print(
+                "Carga completada: "
+                f"{resultado['procesados']} procesados, "
+                f"{resultado['insertados']} insertados y "
+                f"{resultado['actualizados']} actualizados; "
+                f"{resultado['verificados']} verificados."
+            )
 
         print("\n" + "=" * 60)
         print("PROCESO ETL FINALIZADO CORRECTAMENTE")
