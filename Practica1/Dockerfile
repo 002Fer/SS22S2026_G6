@@ -30,3 +30,4 @@ COPY datos ./datos
 
 CMD ["python", "src/main.py", "--crear-esquema"]
 
+#.env.example:
