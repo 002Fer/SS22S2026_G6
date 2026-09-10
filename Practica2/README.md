@@ -351,6 +351,8 @@ Los gráficos por aerolínea permiten comparar el volumen de vuelos y tickets, m
 
 El análisis temporal también permite observar cambios en la cantidad de vuelos y detectar períodos en los que el volumen de operaciones presenta variaciones.
 
+Esta información sirve como apoyo para la toma de decisiones, ya que facilita detectar aerolíneas con mayor volumen de operaciones, reconocer períodos con cambios importantes y dar seguimiento al nivel de puntualidad. De esta manera, los datos pueden utilizarse para identificar posibles áreas de mejora y evaluar el desempeño de la operación aérea.
+
 ---
 ## Relevancia estratégica
 
