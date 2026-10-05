@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: int_ventas_lineas
+    description: "Consolidado intermedio de líneas de venta con atributos del encabezado y costos."
+    columns:
+      - name: id_detalle
+        tests:
+          - unique
+          - not_null
+      - name: id_venta
+        tests:
+          - not_null
+
+  - name: int_inventario_costos
+    description: "Snapshot intermedio de inventario enriquecido con valoración a costo."
+    columns:
+      - name: fecha_corte
+        tests:
+          - not_null
+      - name: id_sucursal
+        tests:
+          - not_null
+      - name: id_producto
+        tests:
+          - not_null
+
+  - name: int_devoluciones_detalle
+    description: "Detalle intermedio de devoluciones enriquecido con sucursal y cliente de la venta."
+    columns:
+      - name: id_devolucion
+        tests:
+          - unique
+          - not_null

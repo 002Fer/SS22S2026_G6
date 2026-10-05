@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Tablas de origen crudas cargadas desde el sistema OLTP transaccional y archivos CSV externos."
+    tables:
+      - name: sucursal
+        description: "Sucursales de distribución de SG-Food (OLTP)."
+      - name: categoria
+        description: "Categorías de productos de catálogo (OLTP)."
+      - name: marca
+        description: "Marcas comercializadas por SG-Food (OLTP)."
+      - name: producto
+        description: "Catálogo de productos de SG-Food (OLTP)."
+      - name: cliente
+        description: "Clientes registrados en el sistema (OLTP)."
+      - name: venta
+        description: "Encabezado de transacciones de ventas (OLTP)."
+      - name: venta_detalle
+        description: "Detalle por ítem de cada transacción de venta (OLTP)."
+      - name: inventario_bodega
+        description: "Snapshots de inventario en bodega por fecha de corte (CSV)."
+      - name: proveedores_precios
+        description: "Precios y plazos de insumos ofrecidos por proveedores (CSV)."
+      - name: promociones
+        description: "Promociones y descuentos vigentes por categoría (CSV)."
+      - name: metas_ventas
+        description: "Metas mensuales de ventas y unidades por sucursal (CSV)."
+      - name: devoluciones
+        description: "Registro de devoluciones de producto por venta y cliente (CSV)."

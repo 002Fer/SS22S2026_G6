@@ -26,6 +26,7 @@ services:
       - "127.0.0.1:5434:5432"
     volumes:
       - warehouse_postgres_data:/var/lib/postgresql/data
+      - ./sql/create_schemas.sql:/docker-entrypoint-initdb.d/001_create_schemas.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U sgfood -d sgfood_dw"]
       interval: 5s
@@ -63,7 +64,24 @@ services:
     command: ["run-all"]
     restart: "no"
 
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-postgres:1.7.9
+    depends_on:
+      warehouse_db:
+        condition: service_healthy
+      python_loader:
+        condition: service_completed_successfully
+    environment:
+      DBT_HOST: warehouse_db
+      DBT_PORT: 5432
+      DBT_USER: sgfood
+      DBT_PASSWORD: sgfood_dw_2026
+      DBT_DBNAME: sgfood_dw
+    volumes:
+      - ./dbt/sgfood_dbt:/usr/app
+    working_dir: /usr/app
+    command: ["run", "--profiles-dir", "."]
+
 volumes:
   source_postgres_data:
   warehouse_postgres_data:
-

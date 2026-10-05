@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: stg_sucursales
+    description: "Modelo staging de sucursales."
+    columns:
+      - name: id_sucursal
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_categorias
+    description: "Modelo staging de categorías."
+    columns:
+      - name: id_categoria
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_marcas
+    description: "Modelo staging de marcas."
+    columns:
+      - name: id_marca
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_productos
+    description: "Modelo staging de productos."
+    columns:
+      - name: id_producto
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_clientes
+    description: "Modelo staging de clientes."
+    columns:
+      - name: id_cliente
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_ventas
+    description: "Modelo staging de encabezados de ventas."
+    columns:
+      - name: id_venta
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_ventas_detalle
+    description: "Modelo staging de líneas de ventas."
+    columns:
+      - name: id_detalle
+        tests:
+          - unique
+          - not_null
+      - name: id_venta
+        tests:
+          - not_null
+      - name: id_producto
+        tests:
+          - not_null
+
+  - name: stg_inventario_bodega
+    description: "Modelo staging de inventario."
+    columns:
+      - name: id_sucursal
+        tests:
+          - not_null
+      - name: id_producto
+        tests:
+          - not_null
+      - name: fecha_corte
+        tests:
+          - not_null
+
+  - name: stg_metas_ventas
+    description: "Modelo staging de metas de ventas."
+    columns:
+      - name: periodo
+        tests:
+          - not_null
+      - name: id_sucursal
+        tests:
+          - not_null
+
+  - name: stg_devoluciones
+    description: "Modelo staging de devoluciones."
+    columns:
+      - name: id_devolucion
+        tests:
+          - unique
+          - not_null

@@ -1,0 +1,144 @@
+version: 2
+
+models:
+  # Dimensiones
+  - name: dim_clientes
+    description: "Dimensión de clientes de SG-Food."
+    columns:
+      - name: cliente_sk
+        tests:
+          - unique
+          - not_null
+      - name: id_cliente
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_productos
+    description: "Dimensión de productos con jerarquía de marca y categoría."
+    columns:
+      - name: producto_sk
+        tests:
+          - unique
+          - not_null
+      - name: id_producto
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_sucursales
+    description: "Dimensión de sucursales."
+    columns:
+      - name: sucursal_sk
+        tests:
+          - unique
+          - not_null
+      - name: id_sucursal
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_fecha
+    description: "Dimensión de calendario."
+    columns:
+      - name: fecha_sk
+        tests:
+          - unique
+          - not_null
+      - name: fecha
+        tests:
+          - unique
+          - not_null
+
+  # Tablas de hechos
+  - name: fct_ventas
+    description: "Tabla de hechos de transacciones de ventas a nivel de línea."
+    columns:
+      - name: venta_linea_sk
+        tests:
+          - unique
+          - not_null
+      - name: cliente_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_clientes')
+              field: cliente_sk
+      - name: sucursal_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_sucursales')
+              field: sucursal_sk
+      - name: producto_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_productos')
+              field: producto_sk
+      - name: fecha_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_fecha')
+              field: fecha_sk
+
+  - name: fct_inventario
+    description: "Tabla de hechos de inventario por fecha de corte y sucursal."
+    columns:
+      - name: inventario_sk
+        tests:
+          - unique
+          - not_null
+      - name: sucursal_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_sucursales')
+              field: sucursal_sk
+      - name: producto_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_productos')
+              field: producto_sk
+      - name: fecha_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_fecha')
+              field: fecha_sk
+
+  - name: fct_metas_ventas
+    description: "Tabla de hechos de metas de ventas mensuales."
+    columns:
+      - name: meta_sk
+        tests:
+          - unique
+          - not_null
+      - name: sucursal_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_sucursales')
+              field: sucursal_sk
+
+  - name: fct_devoluciones
+    description: "Tabla de hechos de devoluciones de producto."
+    columns:
+      - name: devolucion_sk
+        tests:
+          - unique
+          - not_null
+      - name: sucursal_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_sucursales')
+              field: sucursal_sk
+      - name: producto_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_productos')
+              field: producto_sk
