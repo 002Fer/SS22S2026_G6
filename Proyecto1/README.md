@@ -4,7 +4,7 @@
 
 - **Integrante 1:** Python y fuentes de datos - Carnet `202000774`
 - **Integrante 2:** PostgreSQL y dbt - Carnet `202001950`
-- **Integrante 3:** Airflow e integración
+- **Integrante 3:** Airflow e integración - Carnet `201602659`
 
 ---
 
@@ -12,7 +12,7 @@
 
 Este proyecto implementa una solución ELT (Extract, Load, Transform) completa e integral para la empresa **SG-Food** utilizando Python, PostgreSQL, dbt Core y Apache Airflow.
 
-El pipeline realiza la extracción desde una base transaccional OLTP y archivos CSV externos, carga los datos sin transformaciones de negocio en el esquema `raw` de un Data Warehouse en PostgreSQL, y construye un modelo analítico dimensional en esquema Estrella mediante modelos dbt en los esquemas `staging`, `intermediate` y `marts`.
+El pipeline realiza la extracción desde una base transaccional OLTP y archivos CSV externos, carga los datos sin transformaciones de negocio en el esquema `raw` de un Data Warehouse en PostgreSQL, construye un modelo analítico dimensional en esquema Estrella mediante modelos dbt en los esquemas `staging`, `intermediate` y `marts`, y orquesta el flujo de inicio a fin utilizando Apache Airflow.
 
 ```text
 +----------------------------+
@@ -34,6 +34,8 @@ El pipeline realiza la extracción desde una base transaccional OLTP y archivos 
 
 ```text
 Proyecto1/
+├── dags/
+│   └── sgfood_elt_dag.py       # DAG principal de Apache Airflow
 ├── data/
 │   ├── csv/                    # Archivos CSV de fuentes externas
 │   ├── oltp/                   # Script DDL y datos de la BD transaccional (sgfood_oltp.sql)
@@ -51,6 +53,7 @@ Proyecto1/
 ├── docs/                       # Documentación del proyecto por integrante
 │   ├── integrante1.md          # Documentación técnica de Python y fuentes raw
 │   ├── integrante2.md          # Documentación técnica de PostgreSQL, dbt y Data Warehouse
+│   ├── integrante3.md          # Documentación técnica de Apache Airflow e integración
 │   └── catalogo_insumos_sgfood.xlsx
 ├── logs/                       # Bitácora de ejecución del cargador Python
 ├── sql/
@@ -80,33 +83,44 @@ Proyecto1/
 ## Componente 1: Python y Fuentes de Datos (Integrante 1)
 
 ### Responsabilidad y alcance
-El componente de Python tiene como único propósito la extracción técnica y carga estructurada hacia el esquema `raw` del Data Warehouse:
+El componente de Python realiza la extracción técnica y carga estructurada hacia el esquema `raw` del Data Warehouse:
 
 1. Extraer los datos desde la base de datos relacional transaccional (PostgreSQL OLTP).
 2. Leer y validar los archivos planos delimitados (CSV).
 3. Asegurar la consistencia de tipos de datos básicos y número de registros.
-4. Cargar los datos crudos hacia las tablas del esquema `raw` en PostgreSQL Data Warehouse.
-5. Gestionar el control de errores, reintentos de conexión y trazabilidad con auditoría (`_loaded_at`, `_source`, `_batch_id`).
+4. Cargar los datos crudos hacia las tablas del esquema `raw` en PostgreSQL Data Warehouse con auditoría (`_loaded_at`, `_source`, `_batch_id`).
 
-Para más detalle técnico, ver [`docs/integrante1.md`](file:///c:/Users/compu/Desktop/SS22S2026_G6/Proyecto1/docs/integrante1.md).
+Ver [`docs/integrante1.md`](file:///c:/Users/compu/Desktop/SS22S2026_G6/Proyecto1/docs/integrante1.md).
 
 ---
 
 ## Componente 2: PostgreSQL y dbt (Integrante 2)
 
 ### Responsabilidad y alcance
-El componente de PostgreSQL y dbt tiene a su cargo la arquitectura del Data Warehouse, la definición del modelo dimensional en esquema Estrella y la transformación de datos mediante dbt Core:
+El componente de PostgreSQL y dbt define la arquitectura del Data Warehouse dimensional en Esquema Estrella y realiza las transformaciones mediante dbt Core:
 
 1. **Diseño de Esquemas:** Separación estricta de capas (`raw`, `staging`, `intermediate`, `marts`).
-2. **Capa Staging (`models/staging/`):** Modelos `stg_*.sql` que leen de `raw`, limpian tipos de datos, eliminan espacios en blanco y renombran atributos de forma estándar.
-3. **Capa Intermedia (`models/intermediate/`):** Modelos `int_*.sql` que consolidan encabezados con detalles, calculan ingresos brutos/netos, descuentos, costos y márgenes de utilidad.
+2. **Capa Staging (`models/staging/`):** 12 modelos `stg_*.sql` que limpian y tipan los atributos.
+3. **Capa Intermedia (`models/intermediate/`):** 3 modelos `int_*.sql` que aplican reglas de negocio, ventas netas, descuentos, costos y márgenes de utilidad.
 4. **Capa Marts (`models/marts/`):**
-   - **Dimensiones:** `dim_clientes`, `dim_productos` (con jerarquía de categoría y marca), `dim_sucursales`, `dim_fecha`.
-   - **Hechos:** `fct_ventas` (grano por ítem de venta), `fct_inventario` (snapshots de stock y valoración a costo), `fct_metas_ventas` (cumplimiento de objetivos), `fct_devoluciones` (incidencias de producto).
-5. **Pruebas de Calidad de Datos:** Validaciones automáticas `not_null`, `unique`, `relationships` e inventario de pruebas singulares (`tests/*.sql`).
-6. **Consultas Analíticas (`sql/analytical_queries.sql`):** Reportes de ventas, márgenes, metas, stock crítico y devoluciones.
+   - **Dimensiones:** `dim_clientes`, `dim_productos`, `dim_sucursales`, `dim_fecha`.
+   - **Hechos:** `fct_ventas`, `fct_inventario`, `fct_metas_ventas`, `fct_devoluciones`.
+5. **Pruebas de Calidad:** Validaciones genéricas YML y 3 pruebas singulares (`tests/*.sql`).
+6. **Consultas Analíticas (`sql/analytical_queries.sql`):** 5 reportes estratégicos de inteligencia de negocios.
 
-Para más detalle técnico, ver [`docs/integrante2.md`](file:///c:/Users/compu/Desktop/SS22S2026_G6/Proyecto1/docs/integrante2.md).
+Ver [`docs/integrante2.md`](file:///c:/Users/compu/Desktop/SS22S2026_G6/Proyecto1/docs/integrante2.md).
+
+---
+
+## Componente 3: Apache Airflow e Integración (Integrante 3)
+
+### Responsabilidad y alcance
+El componente de Apache Airflow orquesta el flujo ELT completo de inicio a fin:
+
+1. **Definición del DAG (`dags/sgfood_elt_dag.py`):** Define las dependencias entre la extracción de datos Python (`load-oltp`, `load-csv`), la validación de paridad (`validate`), la construcción de modelos dbt (`dbt run`) y las pruebas de calidad (`dbt test`).
+2. **Control de Ejecución:** Manejo de reintentos, logs de ejecución y calendarización diaria (`0 3 * * *`).
+
+Ver [`docs/integrante3.md`](file:///c:/Users/compu/Desktop/SS22S2026_G6/Proyecto1/docs/integrante3.md).
 
 ---
 
@@ -125,18 +139,8 @@ docker compose run --rm dbt dbt run --project-dir dbt/sgfood_dbt --profiles-dir 
 docker compose run --rm dbt dbt test --project-dir dbt/sgfood_dbt --profiles-dir dbt/sgfood_dbt
 ```
 
-### 2. Ejecución Local de dbt
+### 2. Ejecución de Consultas Analíticas
 
 ```bash
-cd dbt/sgfood_dbt
-dbt run --profiles-dir .
-dbt test --profiles-dir .
+psql -h localhost -p 5434 -U sgfood -d sgfood_dw -f sql/analytical_queries.sql
 ```
-
----
-
-## Verificación de Resultados
-
-- **Validación de Tablas Raw:** `docker compose run --rm python_loader validate`
-- **Validación de Marts en DW:** `psql -h localhost -p 5434 -U sgfood -d sgfood_dw -f sql/validate_marts.sql`
-- **Ejecución de Consultas Analíticas:** `psql -h localhost -p 5434 -U sgfood -d sgfood_dw -f sql/analytical_queries.sql`
