@@ -113,7 +113,7 @@ services:
       - ./dags:/opt/airflow/dags
       - ./logs/airflow:/opt/airflow/logs
       - .:/opt/airflow/project
-    command: standalone
+    command: bash -c "airflow db init && airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@sgfood.com --password admin || true && airflow standalone"
 
 volumes:
   source_postgres_data:
