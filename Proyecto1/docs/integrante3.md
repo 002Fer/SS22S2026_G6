@@ -63,7 +63,7 @@ El pipeline orquestado en Airflow sigue una topología acíclica dividida en 5 e
 ### 1. Comandos de Verificación Paso a Paso
 
 ```bash
-# 1. Levantar la infraestructura completa con Docker Compose
+# 1. Levantar la infraestructura completa con Docker Compose (incluyendo Airflow)
 docker compose up --build -d
 
 # 2. Verificar estado de los contenedores
@@ -87,4 +87,4 @@ psql -h localhost -p 5434 -U sgfood -d sgfood_dw -f sql/analytical_queries.sql
 - **Conteo de Registros:** 12 tablas cargadas en `raw` con 0 discrepancias de paridad.
 - **Transformación:** Esquemas `staging`, `intermediate` y `marts` creados correctamente en PostgreSQL.
 - **Calidad de Datos:** 100% de los dbt tests superados (*PASSED*) sin fallos ni alertas.
-- **Orquestación Airflow:** DAG ejecutado de inicio a fin con todas las tareas en verde (*success*).
+- **Orquestación Airflow:** Servidor web de Airflow activo en `http://localhost:8080`.

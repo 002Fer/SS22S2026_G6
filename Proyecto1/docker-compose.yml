@@ -82,6 +82,37 @@ services:
     working_dir: /usr/app
     command: ["run", "--profiles-dir", "."]
 
+  airflow:
+    image: apache/airflow:2.8.1-python3.11
+    depends_on:
+      warehouse_db:
+        condition: service_healthy
+      source_db:
+        condition: service_healthy
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__WEBSERVER__SECRET_KEY=sgfood_secret_key_2026
+      - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=False
+      - SOURCE_DB_HOST=source_db
+      - SOURCE_DB_PORT=5432
+      - SOURCE_DB_NAME=sgfood_source
+      - SOURCE_DB_USER=sgfood
+      - SOURCE_DB_PASSWORD=sgfood_source_2026
+      - TARGET_DB_HOST=warehouse_db
+      - TARGET_DB_PORT=5432
+      - TARGET_DB_NAME=sgfood_dw
+      - TARGET_DB_USER=sgfood
+      - TARGET_DB_PASSWORD=sgfood_dw_2026
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs/airflow:/opt/airflow/logs
+      - .:/opt/airflow/project
+    command: standalone
+
 volumes:
   source_postgres_data:
   warehouse_postgres_data:
