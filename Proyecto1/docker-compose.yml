@@ -95,6 +95,8 @@ services:
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - AIRFLOW__WEBSERVER__SECRET_KEY=sgfood_secret_key_2026
       - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=False
+      - _AIRFLOW_WWW_USER_USERNAME=admin
+      - _AIRFLOW_WWW_USER_PASSWORD=admin
       - SOURCE_DB_HOST=source_db
       - SOURCE_DB_PORT=5432
       - SOURCE_DB_NAME=sgfood_source
