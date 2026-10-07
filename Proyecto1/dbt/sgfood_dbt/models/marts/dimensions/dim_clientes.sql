@@ -1,3 +1,4 @@
+-- depends_on: {{ ref('stg_clientes') }}
 with stg_clientes as (
     select * from {{ ref('stg_clientes') }}
 )

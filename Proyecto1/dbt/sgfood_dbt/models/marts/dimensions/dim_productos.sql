@@ -1,3 +1,7 @@
+-- depends_on: {{ ref('stg_productos') }}
+-- depends_on: {{ ref('stg_categorias') }}
+-- depends_on: {{ ref('stg_marcas') }}
+
 with productos as (
     select * from {{ ref('stg_productos') }}
 ),

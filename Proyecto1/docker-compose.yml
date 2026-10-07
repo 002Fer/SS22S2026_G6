@@ -90,11 +90,14 @@ services:
       source_db:
         condition: service_healthy
     environment:
+      - PATH=/home/airflow/.local/bin:/usr/local/bin:/usr/bin:/bin
+      - PYTHONPATH=/opt/airflow/project:/home/airflow/.local/lib/python3.11/site-packages
       - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - AIRFLOW__WEBSERVER__SECRET_KEY=sgfood_secret_key_2026
       - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=False
+      - _AIRFLOW_WWW_USER_CREATE=true
       - _AIRFLOW_WWW_USER_USERNAME=admin
       - _AIRFLOW_WWW_USER_PASSWORD=admin
       - SOURCE_DB_HOST=source_db
@@ -107,13 +110,18 @@ services:
       - TARGET_DB_NAME=sgfood_dw
       - TARGET_DB_USER=sgfood
       - TARGET_DB_PASSWORD=sgfood_dw_2026
+      - DBT_HOST=warehouse_db
+      - DBT_PORT=5432
+      - DBT_USER=sgfood
+      - DBT_PASSWORD=sgfood_dw_2026
+      - DBT_DBNAME=sgfood_dw
     ports:
       - "8080:8080"
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs/airflow:/opt/airflow/logs
       - .:/opt/airflow/project
-    command: bash -c "airflow db init && airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@sgfood.com --password admin || true && airflow standalone"
+    command: bash -c "/usr/local/bin/pip install --user --no-cache-dir 'psycopg[binary]' dbt-postgres && exec airflow standalone"
 
 volumes:
   source_postgres_data:

@@ -1,3 +1,5 @@
+-- depends_on: {{ ref('int_inventario_costos') }}
+
 with int_inventario as (
     select * from {{ ref('int_inventario_costos') }}
 )

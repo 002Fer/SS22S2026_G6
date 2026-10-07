@@ -1,3 +1,5 @@
+-- depends_on: {{ ref('int_devoluciones_detalle') }}
+
 with int_devoluciones as (
     select * from {{ ref('int_devoluciones_detalle') }}
 )

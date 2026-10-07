@@ -1,0 +1,50 @@
+[2026-10-06T23:14:26.625+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.dbt_run_models scheduled__2026-10-05T03:00:00+00:00 [queued]>
+[2026-10-06T23:14:26.637+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.dbt_run_models scheduled__2026-10-05T03:00:00+00:00 [queued]>
+[2026-10-06T23:14:26.638+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 3
+[2026-10-06T23:14:26.668+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): dbt_run_models> on 2026-10-05 03:00:00+00:00
+[2026-10-06T23:14:26.678+0000] {standard_task_runner.py:60} INFO - Started process 380 to run task
+[2026-10-06T23:14:26.682+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'dbt_run_models', 'scheduled__2026-10-05T03:00:00+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmpf17x4wh5']
+[2026-10-06T23:14:26.685+0000] {standard_task_runner.py:88} INFO - Job 8: Subtask dbt_run_models
+[2026-10-06T23:14:26.720+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-06T23:14:26.775+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.dbt_run_models scheduled__2026-10-05T03:00:00+00:00 [running]> on host 678e88aa542a
+[2026-10-06T23:14:26.876+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='dbt_run_models' AIRFLOW_CTX_EXECUTION_DATE='2026-10-05T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-05T03:00:00+00:00'
+[2026-10-06T23:14:26.881+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-06T23:14:26.882+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd dbt/sgfood_dbt && dbt run --profiles-dir .']
+[2026-10-06T23:14:26.899+0000] {subprocess.py:86} INFO - Output:
+[2026-10-06T23:14:30.575+0000] {subprocess.py:93} INFO - [0m23:14:30  Running with dbt=1.12.5
+[2026-10-06T23:14:30.603+0000] {subprocess.py:93} INFO - [0m23:14:30  [[31mERROR[0m]: Encountered an error:
+[2026-10-06T23:14:30.604+0000] {subprocess.py:93} INFO - Runtime Error
+[2026-10-06T23:14:30.605+0000] {subprocess.py:93} INFO - 
+[2026-10-06T23:14:30.606+0000] {subprocess.py:93} INFO -   dbt encountered an error while trying to read your profiles.yml file.
+[2026-10-06T23:14:30.607+0000] {subprocess.py:93} INFO - 
+[2026-10-06T23:14:30.607+0000] {subprocess.py:93} INFO -   Runtime Error
+[2026-10-06T23:14:30.608+0000] {subprocess.py:93} INFO -     Syntax error near line 7
+[2026-10-06T23:14:30.609+0000] {subprocess.py:93} INFO -     ------------------------------
+[2026-10-06T23:14:30.610+0000] {subprocess.py:93} INFO -     4  |     dev:
+[2026-10-06T23:14:30.611+0000] {subprocess.py:93} INFO -     5  |       type: postgres
+[2026-10-06T23:14:30.612+0000] {subprocess.py:93} INFO -     6  |       host: "{{ env_var('DBT_HOST', 'warehouse_db') }}"
+[2026-10-06T23:14:30.612+0000] {subprocess.py:93} INFO -     7  |       port: {{ env_var('DBT_PORT', '5432') | int }}
+[2026-10-06T23:14:30.613+0000] {subprocess.py:93} INFO -     8  |       user: "{{ env_var('DBT_USER', 'sgfood') }}"
+[2026-10-06T23:14:30.614+0000] {subprocess.py:93} INFO -     9  |       pass: "{{ env_var('DBT_PASSWORD', 'sgfood_dw_2026') }}"
+[2026-10-06T23:14:30.615+0000] {subprocess.py:93} INFO -     10 |       dbname: "{{ env_var('DBT_DBNAME', 'sgfood_dw') }}"
+[2026-10-06T23:14:30.616+0000] {subprocess.py:93} INFO - 
+[2026-10-06T23:14:30.617+0000] {subprocess.py:93} INFO -     Raw Error:
+[2026-10-06T23:14:30.617+0000] {subprocess.py:93} INFO -     ------------------------------
+[2026-10-06T23:14:30.618+0000] {subprocess.py:93} INFO -     while parsing a flow mapping
+[2026-10-06T23:14:30.619+0000] {subprocess.py:93} INFO -       in "<unicode string>", line 7, column 14
+[2026-10-06T23:14:30.620+0000] {subprocess.py:93} INFO -     did not find expected ',' or '}'
+[2026-10-06T23:14:30.621+0000] {subprocess.py:93} INFO -       in "<unicode string>", line 7, column 42
+[2026-10-06T23:14:30.621+0000] {subprocess.py:93} INFO - 
+[2026-10-06T23:14:31.230+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2026-10-06T23:14:31.243+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2026-10-06T23:14:31.251+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=sgfood_elt_pipeline, task_id=dbt_run_models, execution_date=20261005T030000, start_date=20261006T231426, end_date=20261006T231431
+[2026-10-06T23:14:31.278+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 8 for task dbt_run_models (Bash command failed. The command returned a non-zero exit code 2.; 380)
+[2026-10-06T23:14:31.543+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-10-06T23:14:31.578+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

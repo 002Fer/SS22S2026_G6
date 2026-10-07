@@ -1,0 +1,174 @@
+[2026-10-07T04:37:14.203+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.dbt_run_models scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T04:37:14.216+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.dbt_run_models scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T04:37:14.217+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 3
+[2026-10-07T04:37:14.248+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): dbt_run_models> on 2026-10-06 03:00:00+00:00
+[2026-10-07T04:37:14.257+0000] {standard_task_runner.py:60} INFO - Started process 323 to run task
+[2026-10-07T04:37:14.265+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'dbt_run_models', 'scheduled__2026-10-06T03:00:00+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmp6zzahqch']
+[2026-10-07T04:37:14.270+0000] {standard_task_runner.py:88} INFO - Job 8: Subtask dbt_run_models
+[2026-10-07T04:37:14.310+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-07T04:37:14.372+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.dbt_run_models scheduled__2026-10-06T03:00:00+00:00 [running]> on host 2ffd52718d32
+[2026-10-07T04:37:14.479+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='dbt_run_models' AIRFLOW_CTX_EXECUTION_DATE='2026-10-06T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-06T03:00:00+00:00'
+[2026-10-07T04:37:14.483+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-07T04:37:14.483+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/airflow/project/dbt/sgfood_dbt && dbt run --profiles-dir .']
+[2026-10-07T04:37:14.502+0000] {subprocess.py:86} INFO - Output:
+[2026-10-07T04:37:18.453+0000] {subprocess.py:93} INFO - [0m04:37:18  Running with dbt=1.12.5
+[2026-10-07T04:37:18.965+0000] {subprocess.py:93} INFO - [0m04:37:18  Registered adapter: postgres=1.11.0
+[2026-10-07T04:37:21.118+0000] {subprocess.py:93} INFO - [0m04:37:21  Found 23 models, 78 data tests, 12 sources, 478 macros
+[2026-10-07T04:37:21.136+0000] {subprocess.py:93} INFO - [0m04:37:21
+[2026-10-07T04:37:21.140+0000] {subprocess.py:93} INFO - [0m04:37:21  Concurrency: 4 threads (target='dev')
+[2026-10-07T04:37:21.144+0000] {subprocess.py:93} INFO - [0m04:37:21
+[2026-10-07T04:37:21.364+0000] {subprocess.py:93} INFO - [0m04:37:21  1 of 23 START sql table model marts.dim_clientes ............................... [RUN]
+[2026-10-07T04:37:21.367+0000] {subprocess.py:93} INFO - [0m04:37:21  2 of 23 START sql table model marts.dim_fecha .................................. [RUN]
+[2026-10-07T04:37:21.371+0000] {subprocess.py:93} INFO - [0m04:37:21  3 of 23 START sql table model marts.dim_productos .............................. [RUN]
+[2026-10-07T04:37:21.374+0000] {subprocess.py:93} INFO - [0m04:37:21  4 of 23 START sql table model marts.dim_sucursales ............................. [RUN]
+[2026-10-07T04:37:21.468+0000] {subprocess.py:93} INFO - [0m04:37:21  1 of 23 ERROR creating sql table model marts.dim_clientes ...................... [[31mERROR[0m in 0.08s]
+[2026-10-07T04:37:21.473+0000] {subprocess.py:93} INFO - [0m04:37:21  3 of 23 ERROR creating sql table model marts.dim_productos ..................... [[31mERROR[0m in 0.08s]
+[2026-10-07T04:37:21.477+0000] {subprocess.py:93} INFO - [0m04:37:21  4 of 23 ERROR creating sql table model marts.dim_sucursales .................... [[31mERROR[0m in 0.08s]
+[2026-10-07T04:37:21.598+0000] {subprocess.py:93} INFO - [0m04:37:21  5 of 23 START sql table model marts.fct_devoluciones ........................... [RUN]
+[2026-10-07T04:37:21.608+0000] {subprocess.py:93} INFO - [0m04:37:21  6 of 23 START sql table model marts.fct_inventario ............................. [RUN]
+[2026-10-07T04:37:21.612+0000] {subprocess.py:93} INFO - [0m04:37:21  7 of 23 START sql table model marts.fct_metas_ventas ........................... [RUN]
+[2026-10-07T04:37:21.697+0000] {subprocess.py:93} INFO - [0m04:37:21  5 of 23 ERROR creating sql table model marts.fct_devoluciones .................. [[31mERROR[0m in 0.06s]
+[2026-10-07T04:37:21.702+0000] {subprocess.py:93} INFO - [0m04:37:21  6 of 23 ERROR creating sql table model marts.fct_inventario .................... [[31mERROR[0m in 0.06s]
+[2026-10-07T04:37:21.706+0000] {subprocess.py:93} INFO - [0m04:37:21  7 of 23 ERROR creating sql table model marts.fct_metas_ventas .................. [[31mERROR[0m in 0.06s]
+[2026-10-07T04:37:21.738+0000] {subprocess.py:93} INFO - [0m04:37:21  8 of 23 START sql table model marts.fct_ventas ................................. [RUN]
+[2026-10-07T04:37:21.745+0000] {subprocess.py:93} INFO - [0m04:37:21  9 of 23 START sql view model intermediate.int_devoluciones_detalle ............. [RUN]
+[2026-10-07T04:37:21.749+0000] {subprocess.py:93} INFO - [0m04:37:21  10 of 23 START sql view model intermediate.int_inventario_costos ............... [RUN]
+[2026-10-07T04:37:21.865+0000] {subprocess.py:93} INFO - [0m04:37:21  8 of 23 ERROR creating sql table model marts.fct_ventas ........................ [[31mERROR[0m in 0.09s]
+[2026-10-07T04:37:21.869+0000] {subprocess.py:93} INFO - [0m04:37:21  9 of 23 ERROR creating sql view model intermediate.int_devoluciones_detalle .... [[31mERROR[0m in 0.09s]
+[2026-10-07T04:37:21.877+0000] {subprocess.py:93} INFO - [0m04:37:21  10 of 23 ERROR creating sql view model intermediate.int_inventario_costos ...... [[31mERROR[0m in 0.07s]
+[2026-10-07T04:37:21.952+0000] {subprocess.py:93} INFO - [0m04:37:21  11 of 23 START sql view model intermediate.int_ventas_lineas ................... [RUN]
+[2026-10-07T04:37:21.960+0000] {subprocess.py:93} INFO - [0m04:37:21  12 of 23 START sql view model staging.stg_categorias ........................... [RUN]
+[2026-10-07T04:37:21.964+0000] {subprocess.py:93} INFO - [0m04:37:21  13 of 23 START sql view model staging.stg_clientes ............................. [RUN]
+[2026-10-07T04:37:22.073+0000] {subprocess.py:93} INFO - [0m04:37:22  11 of 23 ERROR creating sql view model intermediate.int_ventas_lineas .......... [[31mERROR[0m in 0.08s]
+[2026-10-07T04:37:22.198+0000] {subprocess.py:93} INFO - [0m04:37:22  14 of 23 START sql view model staging.stg_devoluciones ......................... [RUN]
+[2026-10-07T04:37:22.214+0000] {subprocess.py:93} INFO - [0m04:37:22  2 of 23 OK created sql table model marts.dim_fecha ............................. [[32mSELECT 1096[0m in 0.82s]
+[2026-10-07T04:37:22.260+0000] {subprocess.py:93} INFO - [0m04:37:22  15 of 23 START sql view model staging.stg_inventario_bodega .................... [RUN]
+[2026-10-07T04:37:22.589+0000] {subprocess.py:93} INFO - [0m04:37:22  12 of 23 OK created sql view model staging.stg_categorias ...................... [[32mCREATE VIEW[0m in 0.59s]
+[2026-10-07T04:37:22.594+0000] {subprocess.py:93} INFO - [0m04:37:22  13 of 23 OK created sql view model staging.stg_clientes ........................ [[32mCREATE VIEW[0m in 0.59s]
+[2026-10-07T04:37:22.644+0000] {subprocess.py:93} INFO - [0m04:37:22  16 of 23 START sql view model staging.stg_marcas ............................... [RUN]
+[2026-10-07T04:37:22.648+0000] {subprocess.py:93} INFO - [0m04:37:22  17 of 23 START sql view model staging.stg_metas_ventas ......................... [RUN]
+[2026-10-07T04:37:22.710+0000] {subprocess.py:93} INFO - [0m04:37:22  14 of 23 OK created sql view model staging.stg_devoluciones .................... [[32mCREATE VIEW[0m in 0.48s]
+[2026-10-07T04:37:22.738+0000] {subprocess.py:93} INFO - [0m04:37:22  15 of 23 OK created sql view model staging.stg_inventario_bodega ............... [[32mCREATE VIEW[0m in 0.46s]
+[2026-10-07T04:37:22.743+0000] {subprocess.py:93} INFO - [0m04:37:22  18 of 23 START sql view model staging.stg_productos ............................ [RUN]
+[2026-10-07T04:37:22.786+0000] {subprocess.py:93} INFO - [0m04:37:22  19 of 23 START sql view model staging.stg_promociones .......................... [RUN]
+[2026-10-07T04:37:23.155+0000] {subprocess.py:93} INFO - [0m04:37:23  16 of 23 OK created sql view model staging.stg_marcas .......................... [[32mCREATE VIEW[0m in 0.48s]
+[2026-10-07T04:37:23.160+0000] {subprocess.py:93} INFO - [0m04:37:23  17 of 23 OK created sql view model staging.stg_metas_ventas .................... [[32mCREATE VIEW[0m in 0.48s]
+[2026-10-07T04:37:23.199+0000] {subprocess.py:93} INFO - [0m04:37:23  20 of 23 START sql view model staging.stg_proveedores_precios .................. [RUN]
+[2026-10-07T04:37:23.211+0000] {subprocess.py:93} INFO - [0m04:37:23  21 of 23 START sql view model staging.stg_sucursales ........................... [RUN]
+[2026-10-07T04:37:23.261+0000] {subprocess.py:93} INFO - [0m04:37:23  18 of 23 OK created sql view model staging.stg_productos ....................... [[32mCREATE VIEW[0m in 0.47s]
+[2026-10-07T04:37:23.305+0000] {subprocess.py:93} INFO - [0m04:37:23  22 of 23 START sql view model staging.stg_ventas ............................... [RUN]
+[2026-10-07T04:37:23.310+0000] {subprocess.py:93} INFO - [0m04:37:23  19 of 23 OK created sql view model staging.stg_promociones ..................... [[32mCREATE VIEW[0m in 0.50s]
+[2026-10-07T04:37:23.366+0000] {subprocess.py:93} INFO - [0m04:37:23  23 of 23 START sql view model staging.stg_ventas_detalle ....................... [RUN]
+[2026-10-07T04:37:23.703+0000] {subprocess.py:93} INFO - [0m04:37:23  20 of 23 OK created sql view model staging.stg_proveedores_precios ............. [[32mCREATE VIEW[0m in 0.47s]
+[2026-10-07T04:37:23.733+0000] {subprocess.py:93} INFO - [0m04:37:23  21 of 23 OK created sql view model staging.stg_sucursales ...................... [[32mCREATE VIEW[0m in 0.48s]
+[2026-10-07T04:37:23.798+0000] {subprocess.py:93} INFO - [0m04:37:23  22 of 23 OK created sql view model staging.stg_ventas .......................... [[32mCREATE VIEW[0m in 0.46s]
+[2026-10-07T04:37:24.482+0000] {subprocess.py:93} INFO - [0m04:37:24  23 of 23 OK created sql view model staging.stg_ventas_detalle .................. [[32mCREATE VIEW[0m in 0.44s]
+[2026-10-07T04:37:24.560+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.563+0000] {subprocess.py:93} INFO - [0m04:37:24  Finished running 8 table models, 15 view models in 0 hours 0 minutes and 3.41 seconds (3.41s).
+[2026-10-07T04:37:24.853+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.856+0000] {subprocess.py:93} INFO - [0m04:37:24  [31mCompleted with 10 errors, 0 partial successes, and 0 warnings:[0m
+[2026-10-07T04:37:24.860+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.864+0000] {subprocess.py:93} INFO - [0m04:37:24  [[31mERROR[0m]: in model dim_clientes (models/marts/dimensions/dim_clientes.sql)
+[2026-10-07T04:37:24.867+0000] {subprocess.py:93} INFO - [0m04:37:24    Compilation Error in model dim_clientes (models/marts/dimensions/dim_clientes.sql)
+[2026-10-07T04:37:24.868+0000] {subprocess.py:93} INFO -   dbt was unable to infer all dependencies for the model "dim_clientes".
+[2026-10-07T04:37:24.869+0000] {subprocess.py:93} INFO -   This typically happens when ref() is placed within a conditional block.
+[2026-10-07T04:37:24.870+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.872+0000] {subprocess.py:93} INFO -   To fix this, add the following hint to the top of the model "dim_clientes":
+[2026-10-07T04:37:24.873+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.874+0000] {subprocess.py:93} INFO -   -- depends_on: {{ ref('stg_clientes') }}
+[2026-10-07T04:37:24.874+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.875+0000] {subprocess.py:93} INFO - [0m04:37:24  [[31mERROR[0m]: in model dim_productos (models/marts/dimensions/dim_productos.sql)
+[2026-10-07T04:37:24.879+0000] {subprocess.py:93} INFO - [0m04:37:24    Compilation Error in model dim_productos (models/marts/dimensions/dim_productos.sql)
+[2026-10-07T04:37:24.880+0000] {subprocess.py:93} INFO -   dbt was unable to infer all dependencies for the model "dim_productos".
+[2026-10-07T04:37:24.881+0000] {subprocess.py:93} INFO -   This typically happens when ref() is placed within a conditional block.
+[2026-10-07T04:37:24.882+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.883+0000] {subprocess.py:93} INFO -   To fix this, add the following hint to the top of the model "dim_productos":
+[2026-10-07T04:37:24.884+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.885+0000] {subprocess.py:93} INFO -   -- depends_on: {{ ref('stg_productos') }}
+[2026-10-07T04:37:24.886+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.887+0000] {subprocess.py:93} INFO - [0m04:37:24  [[31mERROR[0m]: in model dim_sucursales (models/marts/dimensions/dim_sucursales.sql)
+[2026-10-07T04:37:24.891+0000] {subprocess.py:93} INFO - [0m04:37:24    Compilation Error in model dim_sucursales (models/marts/dimensions/dim_sucursales.sql)
+[2026-10-07T04:37:24.892+0000] {subprocess.py:93} INFO -   dbt was unable to infer all dependencies for the model "dim_sucursales".
+[2026-10-07T04:37:24.892+0000] {subprocess.py:93} INFO -   This typically happens when ref() is placed within a conditional block.
+[2026-10-07T04:37:24.893+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.894+0000] {subprocess.py:93} INFO -   To fix this, add the following hint to the top of the model "dim_sucursales":
+[2026-10-07T04:37:24.894+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.895+0000] {subprocess.py:93} INFO -   -- depends_on: {{ ref('stg_sucursales') }}
+[2026-10-07T04:37:24.896+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.897+0000] {subprocess.py:93} INFO - [0m04:37:24  [[31mERROR[0m]: in model fct_devoluciones (models/marts/facts/fct_devoluciones.sql)
+[2026-10-07T04:37:24.900+0000] {subprocess.py:93} INFO - [0m04:37:24    Compilation Error in model fct_devoluciones (models/marts/facts/fct_devoluciones.sql)
+[2026-10-07T04:37:24.901+0000] {subprocess.py:93} INFO -   dbt was unable to infer all dependencies for the model "fct_devoluciones".
+[2026-10-07T04:37:24.902+0000] {subprocess.py:93} INFO -   This typically happens when ref() is placed within a conditional block.
+[2026-10-07T04:37:24.903+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.904+0000] {subprocess.py:93} INFO -   To fix this, add the following hint to the top of the model "fct_devoluciones":
+[2026-10-07T04:37:24.904+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.905+0000] {subprocess.py:93} INFO -   -- depends_on: {{ ref('int_devoluciones_detalle') }}
+[2026-10-07T04:37:24.906+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.907+0000] {subprocess.py:93} INFO - [0m04:37:24  [[31mERROR[0m]: in model fct_inventario (models/marts/facts/fct_inventario.sql)
+[2026-10-07T04:37:24.911+0000] {subprocess.py:93} INFO - [0m04:37:24    Compilation Error in model fct_inventario (models/marts/facts/fct_inventario.sql)
+[2026-10-07T04:37:24.912+0000] {subprocess.py:93} INFO -   dbt was unable to infer all dependencies for the model "fct_inventario".
+[2026-10-07T04:37:24.913+0000] {subprocess.py:93} INFO -   This typically happens when ref() is placed within a conditional block.
+[2026-10-07T04:37:24.914+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.914+0000] {subprocess.py:93} INFO -   To fix this, add the following hint to the top of the model "fct_inventario":
+[2026-10-07T04:37:24.915+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.916+0000] {subprocess.py:93} INFO -   -- depends_on: {{ ref('int_inventario_costos') }}
+[2026-10-07T04:37:24.917+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.918+0000] {subprocess.py:93} INFO - [0m04:37:24  [[31mERROR[0m]: in model fct_metas_ventas (models/marts/facts/fct_metas_ventas.sql)
+[2026-10-07T04:37:24.921+0000] {subprocess.py:93} INFO - [0m04:37:24    Compilation Error in model fct_metas_ventas (models/marts/facts/fct_metas_ventas.sql)
+[2026-10-07T04:37:24.922+0000] {subprocess.py:93} INFO -   dbt was unable to infer all dependencies for the model "fct_metas_ventas".
+[2026-10-07T04:37:24.923+0000] {subprocess.py:93} INFO -   This typically happens when ref() is placed within a conditional block.
+[2026-10-07T04:37:24.924+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.924+0000] {subprocess.py:93} INFO -   To fix this, add the following hint to the top of the model "fct_metas_ventas":
+[2026-10-07T04:37:24.925+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.926+0000] {subprocess.py:93} INFO -   -- depends_on: {{ ref('stg_metas_ventas') }}
+[2026-10-07T04:37:24.927+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.928+0000] {subprocess.py:93} INFO - [0m04:37:24  [[31mERROR[0m]: in model fct_ventas (models/marts/facts/fct_ventas.sql)
+[2026-10-07T04:37:24.931+0000] {subprocess.py:93} INFO - [0m04:37:24    Compilation Error in model fct_ventas (models/marts/facts/fct_ventas.sql)
+[2026-10-07T04:37:24.932+0000] {subprocess.py:93} INFO -   dbt was unable to infer all dependencies for the model "fct_ventas".
+[2026-10-07T04:37:24.933+0000] {subprocess.py:93} INFO -   This typically happens when ref() is placed within a conditional block.
+[2026-10-07T04:37:24.934+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.935+0000] {subprocess.py:93} INFO -   To fix this, add the following hint to the top of the model "fct_ventas":
+[2026-10-07T04:37:24.936+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.937+0000] {subprocess.py:93} INFO -   -- depends_on: {{ ref('int_ventas_lineas') }}
+[2026-10-07T04:37:24.938+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.939+0000] {subprocess.py:93} INFO - [0m04:37:24  [[31mERROR[0m]: in model int_devoluciones_detalle (models/intermediate/int_devoluciones_detalle.sql)
+[2026-10-07T04:37:24.941+0000] {subprocess.py:93} INFO - [0m04:37:24    Compilation Error in model int_devoluciones_detalle (models/intermediate/int_devoluciones_detalle.sql)
+[2026-10-07T04:37:24.942+0000] {subprocess.py:93} INFO -   dbt was unable to infer all dependencies for the model "int_devoluciones_detalle".
+[2026-10-07T04:37:24.943+0000] {subprocess.py:93} INFO -   This typically happens when ref() is placed within a conditional block.
+[2026-10-07T04:37:24.944+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.945+0000] {subprocess.py:93} INFO -   To fix this, add the following hint to the top of the model "int_devoluciones_detalle":
+[2026-10-07T04:37:24.946+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.947+0000] {subprocess.py:93} INFO -   -- depends_on: {{ ref('stg_devoluciones') }}
+[2026-10-07T04:37:24.948+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.948+0000] {subprocess.py:93} INFO - [0m04:37:24  [[31mERROR[0m]: in model int_inventario_costos (models/intermediate/int_inventario_costos.sql)
+[2026-10-07T04:37:24.952+0000] {subprocess.py:93} INFO - [0m04:37:24    Compilation Error in model int_inventario_costos (models/intermediate/int_inventario_costos.sql)
+[2026-10-07T04:37:24.953+0000] {subprocess.py:93} INFO -   dbt was unable to infer all dependencies for the model "int_inventario_costos".
+[2026-10-07T04:37:24.955+0000] {subprocess.py:93} INFO -   This typically happens when ref() is placed within a conditional block.
+[2026-10-07T04:37:24.956+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.957+0000] {subprocess.py:93} INFO -   To fix this, add the following hint to the top of the model "int_inventario_costos":
+[2026-10-07T04:37:24.958+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.959+0000] {subprocess.py:93} INFO -   -- depends_on: {{ ref('stg_inventario_bodega') }}
+[2026-10-07T04:37:24.959+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.960+0000] {subprocess.py:93} INFO - [0m04:37:24  [[31mERROR[0m]: in model int_ventas_lineas (models/intermediate/int_ventas_lineas.sql)
+[2026-10-07T04:37:24.962+0000] {subprocess.py:93} INFO - [0m04:37:24    Compilation Error in model int_ventas_lineas (models/intermediate/int_ventas_lineas.sql)
+[2026-10-07T04:37:24.963+0000] {subprocess.py:93} INFO -   dbt was unable to infer all dependencies for the model "int_ventas_lineas".
+[2026-10-07T04:37:24.964+0000] {subprocess.py:93} INFO -   This typically happens when ref() is placed within a conditional block.
+[2026-10-07T04:37:24.965+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.966+0000] {subprocess.py:93} INFO -   To fix this, add the following hint to the top of the model "int_ventas_lineas":
+[2026-10-07T04:37:24.967+0000] {subprocess.py:93} INFO - 
+[2026-10-07T04:37:24.967+0000] {subprocess.py:93} INFO -   -- depends_on: {{ ref('stg_ventas') }}
+[2026-10-07T04:37:24.968+0000] {subprocess.py:93} INFO - [0m04:37:24
+[2026-10-07T04:37:24.969+0000] {subprocess.py:93} INFO - [0m04:37:24  Done. PASS=13 WARN=0 ERROR=10 SKIP=0 NO-OP=0 REUSED=0 TOTAL=23
+[2026-10-07T04:37:26.086+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-10-07T04:37:26.097+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-10-07T04:37:26.103+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=sgfood_elt_pipeline, task_id=dbt_run_models, execution_date=20261006T030000, start_date=20261007T043714, end_date=20261007T043726
+[2026-10-07T04:37:26.127+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 8 for task dbt_run_models (Bash command failed. The command returned a non-zero exit code 1.; 323)
+[2026-10-07T04:37:31.970+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-10-07T04:37:31.997+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

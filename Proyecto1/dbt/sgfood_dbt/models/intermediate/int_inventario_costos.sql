@@ -1,3 +1,6 @@
+-- depends_on: {{ ref('stg_inventario_bodega') }}
+-- depends_on: {{ ref('stg_productos') }}
+
 with inventario as (
     select * from {{ ref('stg_inventario_bodega') }}
 ),

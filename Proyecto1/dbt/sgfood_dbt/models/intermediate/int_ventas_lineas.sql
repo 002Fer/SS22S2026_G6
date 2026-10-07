@@ -1,3 +1,7 @@
+-- depends_on: {{ ref('stg_ventas') }}
+-- depends_on: {{ ref('stg_ventas_detalle') }}
+-- depends_on: {{ ref('stg_productos') }}
+
 with ventas as (
     select * from {{ ref('stg_ventas') }}
 ),

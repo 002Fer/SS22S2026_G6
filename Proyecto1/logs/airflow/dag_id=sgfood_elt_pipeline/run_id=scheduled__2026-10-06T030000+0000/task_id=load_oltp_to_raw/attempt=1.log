@@ -1,0 +1,247 @@
+[2026-10-07T03:00:12.415+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T03:00:12.430+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T03:00:12.431+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-07T03:00:12.461+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_oltp_to_raw> on 2026-10-06 03:00:00+00:00
+[2026-10-07T03:00:12.471+0000] {standard_task_runner.py:60} INFO - Started process 905 to run task
+[2026-10-07T03:00:12.475+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'load_oltp_to_raw', 'scheduled__2026-10-06T03:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmpoh1afx3k']
+[2026-10-07T03:00:12.479+0000] {standard_task_runner.py:88} INFO - Job 9: Subtask load_oltp_to_raw
+[2026-10-07T03:00:12.533+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-07T03:00:12.577+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [running]> on host 678e88aa542a
+[2026-10-07T03:00:12.679+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_oltp_to_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-10-06T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-06T03:00:00+00:00'
+[2026-10-07T03:00:12.683+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-07T03:00:12.684+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main load-oltp']
+[2026-10-07T03:00:12.712+0000] {subprocess.py:86} INFO - Output:
+[2026-10-07T03:00:13.841+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:13,840 | INFO | src.database | Conexión exitosa a PostgreSQL transaccional (source_db:5432/sgfood_source)
+[2026-10-07T03:00:13.867+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:13,866 | INFO | src.database | Conexión exitosa a PostgreSQL Data Warehouse (warehouse_db:5432/sgfood_dw)
+[2026-10-07T03:00:13.898+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:13,898 | INFO | src.pipeline | Schema raw y tablas disponibles
+[2026-10-07T03:00:13.999+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:13,998 | INFO | src.pipeline | raw.sucursal: 6 registros cargados
+[2026-10-07T03:00:14.003+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:14,003 | INFO | src.pipeline | raw.categoria: 8 registros cargados
+[2026-10-07T03:00:14.009+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:14,008 | INFO | src.pipeline | raw.marca: 10 registros cargados
+[2026-10-07T03:00:14.021+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:14,021 | INFO | src.pipeline | raw.producto: 80 registros cargados
+[2026-10-07T03:00:14.036+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:14,035 | INFO | src.pipeline | raw.cliente: 250 registros cargados
+[2026-10-07T03:00:14.077+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:14,077 | INFO | src.pipeline | raw.venta: 1200 registros cargados
+[2026-10-07T03:00:14.164+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:14,163 | INFO | src.pipeline | raw.venta_detalle: 3209 registros cargados
+[2026-10-07T03:00:14.210+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:14,210 | INFO | src.pipeline | Carga OLTP confirmada. batch_id=d7ad7f5f-2cf0-4e7e-8f66-28e07ce1a341
+[2026-10-07T03:00:14.212+0000] {subprocess.py:93} INFO - 2026-10-07 03:00:14,211 | INFO | __main__ | Comando load-oltp finalizado correctamente
+[2026-10-07T03:00:14.306+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-10-07T03:00:14.341+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=sgfood_elt_pipeline, task_id=load_oltp_to_raw, execution_date=20261006T030000, start_date=20261007T030012, end_date=20261007T030014
+[2026-10-07T03:00:14.411+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-07T03:00:14.443+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-10-07T03:30:40.378+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T03:30:40.390+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T03:30:40.391+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-07T03:30:40.430+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_oltp_to_raw> on 2026-10-06 03:00:00+00:00
+[2026-10-07T03:30:40.452+0000] {standard_task_runner.py:60} INFO - Started process 125 to run task
+[2026-10-07T03:30:40.464+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'load_oltp_to_raw', 'scheduled__2026-10-06T03:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmpo4313ij9']
+[2026-10-07T03:30:40.471+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask load_oltp_to_raw
+[2026-10-07T03:30:40.541+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-07T03:30:40.654+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [running]> on host 12f3fa25e5e8
+[2026-10-07T03:30:40.788+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_oltp_to_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-10-06T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-06T03:00:00+00:00'
+[2026-10-07T03:30:40.792+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-07T03:30:40.793+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main load-oltp']
+[2026-10-07T03:30:40.814+0000] {subprocess.py:86} INFO - Output:
+[2026-10-07T03:30:49.947+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-10-07T03:30:49.948+0000] {subprocess.py:93} INFO -   File "<frozen runpy>", line 198, in _run_module_as_main
+[2026-10-07T03:30:49.949+0000] {subprocess.py:93} INFO -   File "<frozen runpy>", line 88, in _run_code
+[2026-10-07T03:30:49.950+0000] {subprocess.py:93} INFO -   File "/opt/airflow/project/src/main.py", line 7, in <module>
+[2026-10-07T03:30:49.957+0000] {subprocess.py:93} INFO -     from .pipeline import inspect_quality_cases, load_csv, load_oltp, run_all, validate_raw
+[2026-10-07T03:30:49.958+0000] {subprocess.py:93} INFO -   File "/opt/airflow/project/src/pipeline.py", line 7, in <module>
+[2026-10-07T03:30:49.969+0000] {subprocess.py:93} INFO -     from psycopg import Connection, sql
+[2026-10-07T03:30:49.970+0000] {subprocess.py:93} INFO - ModuleNotFoundError: No module named 'psycopg'
+[2026-10-07T03:30:49.996+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-10-07T03:30:50.009+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-10-07T03:30:50.020+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=sgfood_elt_pipeline, task_id=load_oltp_to_raw, execution_date=20261006T030000, start_date=20261007T033040, end_date=20261007T033050
+[2026-10-07T03:30:50.063+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 3 for task load_oltp_to_raw (Bash command failed. The command returned a non-zero exit code 1.; 125)
+[2026-10-07T03:30:50.104+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-10-07T03:30:41.175+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-10-07T03:33:33.693+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T03:33:33.714+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T03:33:33.716+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-07T03:33:33.761+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_oltp_to_raw> on 2026-10-06 03:00:00+00:00
+[2026-10-07T03:33:33.777+0000] {standard_task_runner.py:60} INFO - Started process 125 to run task
+[2026-10-07T03:33:33.785+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'load_oltp_to_raw', 'scheduled__2026-10-06T03:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmp4c670lhm']
+[2026-10-07T03:33:33.792+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask load_oltp_to_raw
+[2026-10-07T03:33:33.832+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-07T03:33:33.901+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [running]> on host 2c226df21f66
+[2026-10-07T03:33:34.045+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_oltp_to_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-10-06T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-06T03:00:00+00:00'
+[2026-10-07T03:33:34.052+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-07T03:33:34.054+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main load-oltp']
+[2026-10-07T03:33:34.084+0000] {subprocess.py:86} INFO - Output:
+[2026-10-07T03:33:43.037+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-10-07T03:33:43.038+0000] {subprocess.py:93} INFO -   File "<frozen runpy>", line 198, in _run_module_as_main
+[2026-10-07T03:33:43.040+0000] {subprocess.py:93} INFO -   File "<frozen runpy>", line 88, in _run_code
+[2026-10-07T03:33:43.041+0000] {subprocess.py:93} INFO -   File "/opt/airflow/project/src/main.py", line 7, in <module>
+[2026-10-07T03:33:43.046+0000] {subprocess.py:93} INFO -     from .pipeline import inspect_quality_cases, load_csv, load_oltp, run_all, validate_raw
+[2026-10-07T03:33:43.047+0000] {subprocess.py:93} INFO -   File "/opt/airflow/project/src/pipeline.py", line 7, in <module>
+[2026-10-07T03:33:43.056+0000] {subprocess.py:93} INFO -     from psycopg import Connection, sql
+[2026-10-07T03:33:43.057+0000] {subprocess.py:93} INFO - ModuleNotFoundError: No module named 'psycopg'
+[2026-10-07T03:33:43.083+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-10-07T03:33:43.095+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-10-07T03:33:43.101+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=sgfood_elt_pipeline, task_id=load_oltp_to_raw, execution_date=20261006T030000, start_date=20261007T033333, end_date=20261007T033343
+[2026-10-07T03:33:43.125+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 3 for task load_oltp_to_raw (Bash command failed. The command returned a non-zero exit code 1.; 125)
+[2026-10-07T03:33:43.182+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-10-07T03:33:43.213+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-10-07T03:38:21.917+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T03:38:21.931+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T03:38:21.932+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-07T03:38:21.963+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_oltp_to_raw> on 2026-10-06 03:00:00+00:00
+[2026-10-07T03:38:21.974+0000] {standard_task_runner.py:60} INFO - Started process 92 to run task
+[2026-10-07T03:38:21.978+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'load_oltp_to_raw', 'scheduled__2026-10-06T03:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmpjuq2sx06']
+[2026-10-07T03:38:21.984+0000] {standard_task_runner.py:88} INFO - Job 2: Subtask load_oltp_to_raw
+[2026-10-07T03:38:22.021+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-07T03:38:22.085+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [running]> on host e88d7227a770
+[2026-10-07T03:38:22.223+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_oltp_to_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-10-06T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-06T03:00:00+00:00'
+[2026-10-07T03:38:22.227+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-07T03:38:22.228+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main load-oltp']
+[2026-10-07T03:38:22.252+0000] {subprocess.py:86} INFO - Output:
+[2026-10-07T03:38:22.654+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-10-07T03:38:22.655+0000] {subprocess.py:93} INFO -   File "<frozen runpy>", line 198, in _run_module_as_main
+[2026-10-07T03:38:22.656+0000] {subprocess.py:93} INFO -   File "<frozen runpy>", line 88, in _run_code
+[2026-10-07T03:38:22.657+0000] {subprocess.py:93} INFO -   File "/opt/airflow/project/src/main.py", line 7, in <module>
+[2026-10-07T03:38:22.663+0000] {subprocess.py:93} INFO -     from .pipeline import inspect_quality_cases, load_csv, load_oltp, run_all, validate_raw
+[2026-10-07T03:38:22.665+0000] {subprocess.py:93} INFO -   File "/opt/airflow/project/src/pipeline.py", line 7, in <module>
+[2026-10-07T03:38:22.673+0000] {subprocess.py:93} INFO -     from psycopg import Connection, sql
+[2026-10-07T03:38:22.675+0000] {subprocess.py:93} INFO - ModuleNotFoundError: No module named 'psycopg'
+[2026-10-07T03:38:22.707+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-10-07T03:38:22.724+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-10-07T03:38:22.731+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=sgfood_elt_pipeline, task_id=load_oltp_to_raw, execution_date=20261006T030000, start_date=20261007T033821, end_date=20261007T033822
+[2026-10-07T03:38:22.755+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 2 for task load_oltp_to_raw (Bash command failed. The command returned a non-zero exit code 1.; 92)
+[2026-10-07T03:38:22.788+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-10-07T03:38:22.822+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-10-07T04:12:10.194+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T04:12:10.208+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T04:12:10.210+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-07T04:12:10.242+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_oltp_to_raw> on 2026-10-06 03:00:00+00:00
+[2026-10-07T04:12:10.262+0000] {standard_task_runner.py:60} INFO - Started process 187 to run task
+[2026-10-07T04:12:10.268+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'load_oltp_to_raw', 'scheduled__2026-10-06T03:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmp8ygut5vd']
+[2026-10-07T04:12:10.274+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask load_oltp_to_raw
+[2026-10-07T04:12:10.321+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-07T04:12:10.402+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [running]> on host 26c9da150547
+[2026-10-07T04:12:10.535+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_oltp_to_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-10-06T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-06T03:00:00+00:00'
+[2026-10-07T04:12:10.539+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-07T04:12:10.541+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main load-oltp']
+[2026-10-07T04:12:10.568+0000] {subprocess.py:86} INFO - Output:
+[2026-10-07T04:12:11.366+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,365 | INFO | src.database | Conexión exitosa a PostgreSQL transaccional (source_db:5432/sgfood_source)
+[2026-10-07T04:12:11.386+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,386 | INFO | src.database | Conexión exitosa a PostgreSQL Data Warehouse (warehouse_db:5432/sgfood_dw)
+[2026-10-07T04:12:11.408+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,408 | INFO | src.pipeline | Schema raw y tablas disponibles
+[2026-10-07T04:12:11.466+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,466 | INFO | src.pipeline | raw.sucursal: 6 registros cargados
+[2026-10-07T04:12:11.471+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,471 | INFO | src.pipeline | raw.categoria: 8 registros cargados
+[2026-10-07T04:12:11.475+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,475 | INFO | src.pipeline | raw.marca: 10 registros cargados
+[2026-10-07T04:12:11.485+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,485 | INFO | src.pipeline | raw.producto: 80 registros cargados
+[2026-10-07T04:12:11.496+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,495 | INFO | src.pipeline | raw.cliente: 250 registros cargados
+[2026-10-07T04:12:11.523+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,522 | INFO | src.pipeline | raw.venta: 1200 registros cargados
+[2026-10-07T04:12:11.577+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,577 | INFO | src.pipeline | raw.venta_detalle: 3209 registros cargados
+[2026-10-07T04:12:11.585+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,584 | INFO | src.pipeline | Carga OLTP confirmada. batch_id=6df14726-9571-49b8-9c68-d74916d9ce11
+[2026-10-07T04:12:11.586+0000] {subprocess.py:93} INFO - 2026-10-07 04:12:11,585 | INFO | __main__ | Comando load-oltp finalizado correctamente
+[2026-10-07T04:12:11.680+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-10-07T04:12:11.731+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=sgfood_elt_pipeline, task_id=load_oltp_to_raw, execution_date=20261006T030000, start_date=20261007T041210, end_date=20261007T041211
+[2026-10-07T04:12:11.824+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-07T04:12:11.887+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-10-07T04:26:50.249+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T04:26:50.263+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T04:26:50.265+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-07T04:26:50.306+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_oltp_to_raw> on 2026-10-06 03:00:00+00:00
+[2026-10-07T04:26:50.318+0000] {standard_task_runner.py:60} INFO - Started process 174 to run task
+[2026-10-07T04:26:50.329+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'load_oltp_to_raw', 'scheduled__2026-10-06T03:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmp2k9mg834']
+[2026-10-07T04:26:50.334+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask load_oltp_to_raw
+[2026-10-07T04:26:50.369+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-07T04:26:50.427+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [running]> on host 41d714b9e1fd
+[2026-10-07T04:26:50.549+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_oltp_to_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-10-06T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-06T03:00:00+00:00'
+[2026-10-07T04:26:50.554+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-07T04:26:50.555+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main load-oltp']
+[2026-10-07T04:26:50.576+0000] {subprocess.py:86} INFO - Output:
+[2026-10-07T04:26:51.393+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,393 | INFO | src.database | Conexión exitosa a PostgreSQL transaccional (source_db:5432/sgfood_source)
+[2026-10-07T04:26:51.413+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,412 | INFO | src.database | Conexión exitosa a PostgreSQL Data Warehouse (warehouse_db:5432/sgfood_dw)
+[2026-10-07T04:26:51.452+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,452 | INFO | src.pipeline | Schema raw y tablas disponibles
+[2026-10-07T04:26:51.508+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,508 | INFO | src.pipeline | raw.sucursal: 6 registros cargados
+[2026-10-07T04:26:51.512+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,512 | INFO | src.pipeline | raw.categoria: 8 registros cargados
+[2026-10-07T04:26:51.516+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,516 | INFO | src.pipeline | raw.marca: 10 registros cargados
+[2026-10-07T04:26:51.523+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,523 | INFO | src.pipeline | raw.producto: 80 registros cargados
+[2026-10-07T04:26:51.532+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,532 | INFO | src.pipeline | raw.cliente: 250 registros cargados
+[2026-10-07T04:26:51.557+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,556 | INFO | src.pipeline | raw.venta: 1200 registros cargados
+[2026-10-07T04:26:51.611+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,610 | INFO | src.pipeline | raw.venta_detalle: 3209 registros cargados
+[2026-10-07T04:26:51.621+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,620 | INFO | src.pipeline | Carga OLTP confirmada. batch_id=66882cc4-03f3-4983-846a-fea00bdb6067
+[2026-10-07T04:26:51.622+0000] {subprocess.py:93} INFO - 2026-10-07 04:26:51,621 | INFO | __main__ | Comando load-oltp finalizado correctamente
+[2026-10-07T04:26:51.701+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-10-07T04:26:51.749+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=sgfood_elt_pipeline, task_id=load_oltp_to_raw, execution_date=20261006T030000, start_date=20261007T042650, end_date=20261007T042651
+[2026-10-07T04:26:51.837+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-07T04:26:51.872+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-10-07T04:34:14.733+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T04:34:14.745+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T04:34:14.746+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-07T04:34:14.775+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_oltp_to_raw> on 2026-10-06 03:00:00+00:00
+[2026-10-07T04:34:14.786+0000] {standard_task_runner.py:60} INFO - Started process 174 to run task
+[2026-10-07T04:34:14.794+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'load_oltp_to_raw', 'scheduled__2026-10-06T03:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmp389at015']
+[2026-10-07T04:34:14.798+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask load_oltp_to_raw
+[2026-10-07T04:34:14.833+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-07T04:34:14.887+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [running]> on host 2ffd52718d32
+[2026-10-07T04:34:14.990+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_oltp_to_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-10-06T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-06T03:00:00+00:00'
+[2026-10-07T04:34:14.993+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-07T04:34:14.994+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main load-oltp']
+[2026-10-07T04:34:15.013+0000] {subprocess.py:86} INFO - Output:
+[2026-10-07T04:34:15.765+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,764 | INFO | src.database | Conexión exitosa a PostgreSQL transaccional (source_db:5432/sgfood_source)
+[2026-10-07T04:34:15.782+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,782 | INFO | src.database | Conexión exitosa a PostgreSQL Data Warehouse (warehouse_db:5432/sgfood_dw)
+[2026-10-07T04:34:15.800+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,800 | INFO | src.pipeline | Schema raw y tablas disponibles
+[2026-10-07T04:34:15.861+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,861 | INFO | src.pipeline | raw.sucursal: 6 registros cargados
+[2026-10-07T04:34:15.865+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,865 | INFO | src.pipeline | raw.categoria: 8 registros cargados
+[2026-10-07T04:34:15.870+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,869 | INFO | src.pipeline | raw.marca: 10 registros cargados
+[2026-10-07T04:34:15.879+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,879 | INFO | src.pipeline | raw.producto: 80 registros cargados
+[2026-10-07T04:34:15.894+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,893 | INFO | src.pipeline | raw.cliente: 250 registros cargados
+[2026-10-07T04:34:15.920+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,920 | INFO | src.pipeline | raw.venta: 1200 registros cargados
+[2026-10-07T04:34:15.976+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,976 | INFO | src.pipeline | raw.venta_detalle: 3209 registros cargados
+[2026-10-07T04:34:15.988+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,987 | INFO | src.pipeline | Carga OLTP confirmada. batch_id=70c5ac1e-657b-401e-977e-6ced5e488029
+[2026-10-07T04:34:15.989+0000] {subprocess.py:93} INFO - 2026-10-07 04:34:15,988 | INFO | __main__ | Comando load-oltp finalizado correctamente
+[2026-10-07T04:34:16.060+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-10-07T04:34:16.100+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=sgfood_elt_pipeline, task_id=load_oltp_to_raw, execution_date=20261006T030000, start_date=20261007T043414, end_date=20261007T043416
+[2026-10-07T04:34:24.730+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-07T04:34:24.771+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-10-07T16:53:13.540+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T16:53:13.559+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [queued]>
+[2026-10-07T16:53:13.561+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-07T16:53:13.601+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_oltp_to_raw> on 2026-10-06 03:00:00+00:00
+[2026-10-07T16:53:13.613+0000] {standard_task_runner.py:60} INFO - Started process 174 to run task
+[2026-10-07T16:53:13.622+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'load_oltp_to_raw', 'scheduled__2026-10-06T03:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmpj1ba0r4a']
+[2026-10-07T16:53:13.628+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask load_oltp_to_raw
+[2026-10-07T16:53:13.682+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-07T16:53:13.759+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.load_oltp_to_raw scheduled__2026-10-06T03:00:00+00:00 [running]> on host 7549efc6ec07
+[2026-10-07T16:53:13.915+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_oltp_to_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-10-06T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-06T03:00:00+00:00'
+[2026-10-07T16:53:13.920+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-07T16:53:13.921+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main load-oltp']
+[2026-10-07T16:53:13.947+0000] {subprocess.py:86} INFO - Output:
+[2026-10-07T16:53:15.309+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,309 | INFO | src.database | Conexión exitosa a PostgreSQL transaccional (source_db:5432/sgfood_source)
+[2026-10-07T16:53:15.339+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,339 | INFO | src.database | Conexión exitosa a PostgreSQL Data Warehouse (warehouse_db:5432/sgfood_dw)
+[2026-10-07T16:53:15.397+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,396 | INFO | src.pipeline | Schema raw y tablas disponibles
+[2026-10-07T16:53:15.501+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,501 | INFO | src.pipeline | raw.sucursal: 6 registros cargados
+[2026-10-07T16:53:15.509+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,509 | INFO | src.pipeline | raw.categoria: 8 registros cargados
+[2026-10-07T16:53:15.514+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,514 | INFO | src.pipeline | raw.marca: 10 registros cargados
+[2026-10-07T16:53:15.528+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,527 | INFO | src.pipeline | raw.producto: 80 registros cargados
+[2026-10-07T16:53:15.548+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,547 | INFO | src.pipeline | raw.cliente: 250 registros cargados
+[2026-10-07T16:53:15.581+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,581 | INFO | src.pipeline | raw.venta: 1200 registros cargados
+[2026-10-07T16:53:15.672+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,671 | INFO | src.pipeline | raw.venta_detalle: 3209 registros cargados
+[2026-10-07T16:53:15.682+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,681 | INFO | src.pipeline | Carga OLTP confirmada. batch_id=6f08b2f0-ebe1-4c7b-bc43-d8a0aec7f904
+[2026-10-07T16:53:15.683+0000] {subprocess.py:93} INFO - 2026-10-07 16:53:15,682 | INFO | __main__ | Comando load-oltp finalizado correctamente
+[2026-10-07T16:53:15.769+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-10-07T16:53:15.817+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=sgfood_elt_pipeline, task_id=load_oltp_to_raw, execution_date=20261006T030000, start_date=20261007T165313, end_date=20261007T165315
+[2026-10-07T16:53:15.879+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-07T16:53:15.966+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

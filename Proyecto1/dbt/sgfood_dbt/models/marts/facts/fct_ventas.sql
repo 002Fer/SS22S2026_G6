@@ -1,3 +1,5 @@
+-- depends_on: {{ ref('int_ventas_lineas') }}
+
 with int_ventas as (
     select * from {{ ref('int_ventas_lineas') }}
 )

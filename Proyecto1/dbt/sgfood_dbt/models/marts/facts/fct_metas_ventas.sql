@@ -1,3 +1,4 @@
+-- depends_on: {{ ref('stg_metas_ventas') }}
 with stg_metas as (
     select * from {{ ref('stg_metas_ventas') }}
 )

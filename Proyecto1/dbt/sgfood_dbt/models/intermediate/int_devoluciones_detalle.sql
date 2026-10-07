@@ -1,3 +1,6 @@
+-- depends_on: {{ ref('stg_devoluciones') }}
+-- depends_on: {{ ref('stg_ventas') }}
+
 with devoluciones as (
     select * from {{ ref('stg_devoluciones') }}
 ),
