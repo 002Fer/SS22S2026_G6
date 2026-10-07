@@ -4,7 +4,7 @@ sgfood_dbt:
     dev:
       type: postgres
       host: "{{ env_var('DBT_HOST', 'warehouse_db') }}"
-      port: {{ env_var('DBT_PORT', '5432') | int }}
+      port: "{{ env_var('DBT_PORT', '5432') | int }}"
       user: "{{ env_var('DBT_USER', 'sgfood') }}"
       pass: "{{ env_var('DBT_PASSWORD', 'sgfood_dw_2026') }}"
       dbname: "{{ env_var('DBT_DBNAME', 'sgfood_dw') }}"

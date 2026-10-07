@@ -57,14 +57,14 @@ with DAG(
     # 4. Transformación dbt (staging, intermediate, marts)
     dbt_run_task = BashOperator(
         task_id='dbt_run_models',
-        bash_command='cd dbt/sgfood_dbt && dbt run --profiles-dir .',
+        bash_command='cd /opt/airflow/project/dbt/sgfood_dbt && dbt run --profiles-dir .',
         cwd='/opt/airflow/project',
     )
 
     # 5. Pruebas de Calidad dbt (generic & singular tests)
     dbt_test_task = BashOperator(
         task_id='dbt_test_quality',
-        bash_command='cd dbt/sgfood_dbt && dbt test --profiles-dir .',
+        bash_command='cd /opt/airflow/project/dbt/sgfood_dbt && dbt test --profiles-dir .',
         cwd='/opt/airflow/project',
     )
 
