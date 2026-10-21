@@ -1,0 +1,198 @@
+[2026-10-17T15:02:49.739+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.dbt_test_quality scheduled__2026-10-16T03:00:00+00:00 [queued]>
+[2026-10-17T15:02:49.755+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.dbt_test_quality scheduled__2026-10-16T03:00:00+00:00 [queued]>
+[2026-10-17T15:02:49.756+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 3
+[2026-10-17T15:02:49.812+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): dbt_test_quality> on 2026-10-16 03:00:00+00:00
+[2026-10-17T15:02:49.825+0000] {standard_task_runner.py:60} INFO - Started process 320 to run task
+[2026-10-17T15:02:49.831+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'dbt_test_quality', 'scheduled__2026-10-16T03:00:00+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmpiv_jb640']
+[2026-10-17T15:02:49.836+0000] {standard_task_runner.py:88} INFO - Job 8: Subtask dbt_test_quality
+[2026-10-17T15:02:49.875+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-17T15:02:49.958+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.dbt_test_quality scheduled__2026-10-16T03:00:00+00:00 [running]> on host 5c6267f2a47e
+[2026-10-17T15:02:50.147+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='dbt_test_quality' AIRFLOW_CTX_EXECUTION_DATE='2026-10-16T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-16T03:00:00+00:00'
+[2026-10-17T15:02:50.152+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-17T15:02:50.153+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/airflow/project/dbt/sgfood_dbt && dbt test --profiles-dir .']
+[2026-10-17T15:02:50.180+0000] {subprocess.py:86} INFO - Output:
+[2026-10-17T15:02:56.857+0000] {subprocess.py:93} INFO - [0m15:02:56  Running with dbt=1.13.0-b1
+[2026-10-17T15:02:58.173+0000] {subprocess.py:93} INFO - [0m15:02:58  Registered adapter: postgres=1.11.0
+[2026-10-17T15:02:59.191+0000] {subprocess.py:93} INFO - [0m15:02:59  Unable to do partial parsing because of a version mismatch
+[2026-10-17T15:03:05.650+0000] {subprocess.py:93} INFO - [0m15:03:05  [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+[2026-10-17T15:03:05.651+0000] {subprocess.py:93} INFO - functionality
+[2026-10-17T15:03:05.652+0000] {subprocess.py:93} INFO - Found top-level arguments to test `relationships` defined on 'fct_ventas' in
+[2026-10-17T15:03:05.653+0000] {subprocess.py:93} INFO - package 'sgfood_dbt' (models/marts/marts_models.yml). Arguments to generic tests
+[2026-10-17T15:03:05.654+0000] {subprocess.py:93} INFO - should be nested under the `arguments` property.
+[2026-10-17T15:03:08.006+0000] {subprocess.py:93} INFO - [0m15:03:08  Found 23 models, 78 data tests, 12 sources, 478 macros
+[2026-10-17T15:03:08.043+0000] {subprocess.py:93} INFO - [0m15:03:08
+[2026-10-17T15:03:08.048+0000] {subprocess.py:93} INFO - [0m15:03:08  Concurrency: 4 threads (target='dev')
+[2026-10-17T15:03:08.052+0000] {subprocess.py:93} INFO - [0m15:03:08
+[2026-10-17T15:03:08.514+0000] {subprocess.py:93} INFO - [0m15:03:08  1 of 78 START test assert_devoluciones_validas ................................. [RUN]
+[2026-10-17T15:03:08.520+0000] {subprocess.py:93} INFO - [0m15:03:08  2 of 78 START test assert_stock_no_negativo .................................... [RUN]
+[2026-10-17T15:03:08.525+0000] {subprocess.py:93} INFO - [0m15:03:08  3 of 78 START test assert_ventas_monto_positivo ................................ [RUN]
+[2026-10-17T15:03:08.530+0000] {subprocess.py:93} INFO - [0m15:03:08  4 of 78 START test not_null_dim_clientes_cliente_sk ............................ [RUN]
+[2026-10-17T15:03:08.974+0000] {subprocess.py:93} INFO - [0m15:03:08  1 of 78 PASS assert_devoluciones_validas ....................................... [[32mPASS[0m in 0.44s]
+[2026-10-17T15:03:08.985+0000] {subprocess.py:93} INFO - [0m15:03:08  3 of 78 PASS assert_ventas_monto_positivo ...................................... [[32mPASS[0m in 0.44s]
+[2026-10-17T15:03:08.999+0000] {subprocess.py:93} INFO - [0m15:03:08  2 of 78 PASS assert_stock_no_negativo .......................................... [[32mPASS[0m in 0.46s]
+[2026-10-17T15:03:09.009+0000] {subprocess.py:93} INFO - [0m15:03:09  4 of 78 PASS not_null_dim_clientes_cliente_sk .................................. [[32mPASS[0m in 0.46s]
+[2026-10-17T15:03:09.032+0000] {subprocess.py:93} INFO - [0m15:03:09  5 of 78 START test not_null_dim_clientes_id_cliente ............................ [RUN]
+[2026-10-17T15:03:09.040+0000] {subprocess.py:93} INFO - [0m15:03:09  6 of 78 START test not_null_dim_fecha_fecha .................................... [RUN]
+[2026-10-17T15:03:09.056+0000] {subprocess.py:93} INFO - [0m15:03:09  7 of 78 START test not_null_dim_fecha_fecha_sk ................................. [RUN]
+[2026-10-17T15:03:09.067+0000] {subprocess.py:93} INFO - [0m15:03:09  8 of 78 START test not_null_dim_productos_id_producto .......................... [RUN]
+[2026-10-17T15:03:09.399+0000] {subprocess.py:93} INFO - [0m15:03:09  5 of 78 PASS not_null_dim_clientes_id_cliente .................................. [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:09.428+0000] {subprocess.py:93} INFO - [0m15:03:09  6 of 78 PASS not_null_dim_fecha_fecha .......................................... [[32mPASS[0m in 0.37s]
+[2026-10-17T15:03:09.433+0000] {subprocess.py:93} INFO - [0m15:03:09  8 of 78 PASS not_null_dim_productos_id_producto ................................ [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:09.439+0000] {subprocess.py:93} INFO - [0m15:03:09  7 of 78 PASS not_null_dim_fecha_fecha_sk ....................................... [[32mPASS[0m in 0.36s]
+[2026-10-17T15:03:09.464+0000] {subprocess.py:93} INFO - [0m15:03:09  9 of 78 START test not_null_dim_productos_producto_sk .......................... [RUN]
+[2026-10-17T15:03:09.489+0000] {subprocess.py:93} INFO - [0m15:03:09  10 of 78 START test not_null_dim_sucursales_id_sucursal ........................ [RUN]
+[2026-10-17T15:03:09.495+0000] {subprocess.py:93} INFO - [0m15:03:09  11 of 78 START test not_null_dim_sucursales_sucursal_sk ........................ [RUN]
+[2026-10-17T15:03:09.501+0000] {subprocess.py:93} INFO - [0m15:03:09  12 of 78 START test not_null_fct_devoluciones_devolucion_sk .................... [RUN]
+[2026-10-17T15:03:09.824+0000] {subprocess.py:93} INFO - [0m15:03:09  10 of 78 PASS not_null_dim_sucursales_id_sucursal .............................. [[32mPASS[0m in 0.31s]
+[2026-10-17T15:03:09.833+0000] {subprocess.py:93} INFO - [0m15:03:09  9 of 78 PASS not_null_dim_productos_producto_sk ................................ [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:09.850+0000] {subprocess.py:93} INFO - [0m15:03:09  11 of 78 PASS not_null_dim_sucursales_sucursal_sk .............................. [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:09.879+0000] {subprocess.py:93} INFO - [0m15:03:09  12 of 78 PASS not_null_fct_devoluciones_devolucion_sk .......................... [[32mPASS[0m in 0.36s]
+[2026-10-17T15:03:09.882+0000] {subprocess.py:93} INFO - [0m15:03:09  13 of 78 START test not_null_fct_devoluciones_producto_sk ...................... [RUN]
+[2026-10-17T15:03:09.890+0000] {subprocess.py:93} INFO - [0m15:03:09  14 of 78 START test not_null_fct_devoluciones_sucursal_sk ...................... [RUN]
+[2026-10-17T15:03:09.904+0000] {subprocess.py:93} INFO - [0m15:03:09  15 of 78 START test not_null_fct_inventario_fecha_sk ........................... [RUN]
+[2026-10-17T15:03:09.930+0000] {subprocess.py:93} INFO - [0m15:03:09  16 of 78 START test not_null_fct_inventario_inventario_sk ...................... [RUN]
+[2026-10-17T15:03:10.206+0000] {subprocess.py:93} INFO - [0m15:03:10  15 of 78 PASS not_null_fct_inventario_fecha_sk ................................. [[32mPASS[0m in 0.28s]
+[2026-10-17T15:03:10.253+0000] {subprocess.py:93} INFO - [0m15:03:10  14 of 78 PASS not_null_fct_devoluciones_sucursal_sk ............................ [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:10.258+0000] {subprocess.py:93} INFO - [0m15:03:10  13 of 78 PASS not_null_fct_devoluciones_producto_sk ............................ [[32mPASS[0m in 0.36s]
+[2026-10-17T15:03:10.266+0000] {subprocess.py:93} INFO - [0m15:03:10  17 of 78 START test not_null_fct_inventario_producto_sk ........................ [RUN]
+[2026-10-17T15:03:10.308+0000] {subprocess.py:93} INFO - [0m15:03:10  18 of 78 START test not_null_fct_inventario_sucursal_sk ........................ [RUN]
+[2026-10-17T15:03:10.312+0000] {subprocess.py:93} INFO - [0m15:03:10  19 of 78 START test not_null_fct_metas_ventas_meta_sk .......................... [RUN]
+[2026-10-17T15:03:10.358+0000] {subprocess.py:93} INFO - [0m15:03:10  16 of 78 PASS not_null_fct_inventario_inventario_sk ............................ [[32mPASS[0m in 0.37s]
+[2026-10-17T15:03:10.444+0000] {subprocess.py:93} INFO - [0m15:03:10  20 of 78 START test not_null_fct_metas_ventas_sucursal_sk ...................... [RUN]
+[2026-10-17T15:03:10.621+0000] {subprocess.py:93} INFO - [0m15:03:10  17 of 78 PASS not_null_fct_inventario_producto_sk .............................. [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:10.631+0000] {subprocess.py:93} INFO - [0m15:03:10  18 of 78 PASS not_null_fct_inventario_sucursal_sk .............................. [[32mPASS[0m in 0.29s]
+[2026-10-17T15:03:10.697+0000] {subprocess.py:93} INFO - [0m15:03:10  19 of 78 PASS not_null_fct_metas_ventas_meta_sk ................................ [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:10.703+0000] {subprocess.py:93} INFO - [0m15:03:10  21 of 78 START test not_null_fct_ventas_cliente_sk ............................. [RUN]
+[2026-10-17T15:03:10.716+0000] {subprocess.py:93} INFO - [0m15:03:10  22 of 78 START test not_null_fct_ventas_fecha_sk ............................... [RUN]
+[2026-10-17T15:03:10.762+0000] {subprocess.py:93} INFO - [0m15:03:10  23 of 78 START test not_null_fct_ventas_producto_sk ............................ [RUN]
+[2026-10-17T15:03:10.877+0000] {subprocess.py:93} INFO - [0m15:03:10  20 of 78 PASS not_null_fct_metas_ventas_sucursal_sk ............................ [[32mPASS[0m in 0.43s]
+[2026-10-17T15:03:10.920+0000] {subprocess.py:93} INFO - [0m15:03:10  24 of 78 START test not_null_fct_ventas_sucursal_sk ............................ [RUN]
+[2026-10-17T15:03:11.041+0000] {subprocess.py:93} INFO - [0m15:03:11  21 of 78 PASS not_null_fct_ventas_cliente_sk ................................... [[32mPASS[0m in 0.31s]
+[2026-10-17T15:03:11.071+0000] {subprocess.py:93} INFO - [0m15:03:11  22 of 78 PASS not_null_fct_ventas_fecha_sk ..................................... [[32mPASS[0m in 0.33s]
+[2026-10-17T15:03:11.092+0000] {subprocess.py:93} INFO - [0m15:03:11  23 of 78 PASS not_null_fct_ventas_producto_sk .................................. [[32mPASS[0m in 0.27s]
+[2026-10-17T15:03:11.095+0000] {subprocess.py:93} INFO - [0m15:03:11  25 of 78 START test not_null_fct_ventas_venta_linea_sk ......................... [RUN]
+[2026-10-17T15:03:11.116+0000] {subprocess.py:93} INFO - [0m15:03:11  26 of 78 START test not_null_int_devoluciones_detalle_id_devolucion ............ [RUN]
+[2026-10-17T15:03:11.143+0000] {subprocess.py:93} INFO - [0m15:03:11  27 of 78 START test not_null_int_inventario_costos_fecha_corte ................. [RUN]
+[2026-10-17T15:03:11.282+0000] {subprocess.py:93} INFO - [0m15:03:11  24 of 78 PASS not_null_fct_ventas_sucursal_sk .................................. [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:11.300+0000] {subprocess.py:93} INFO - [0m15:03:11  28 of 78 START test not_null_int_inventario_costos_id_producto ................. [RUN]
+[2026-10-17T15:03:11.411+0000] {subprocess.py:93} INFO - [0m15:03:11  25 of 78 PASS not_null_fct_ventas_venta_linea_sk ............................... [[32mPASS[0m in 0.30s]
+[2026-10-17T15:03:11.460+0000] {subprocess.py:93} INFO - [0m15:03:11  26 of 78 PASS not_null_int_devoluciones_detalle_id_devolucion .................. [[32mPASS[0m in 0.33s]
+[2026-10-17T15:03:11.469+0000] {subprocess.py:93} INFO - [0m15:03:11  29 of 78 START test not_null_int_inventario_costos_id_sucursal ................. [RUN]
+[2026-10-17T15:03:11.479+0000] {subprocess.py:93} INFO - [0m15:03:11  27 of 78 PASS not_null_int_inventario_costos_fecha_corte ....................... [[32mPASS[0m in 0.30s]
+[2026-10-17T15:03:11.503+0000] {subprocess.py:93} INFO - [0m15:03:11  30 of 78 START test not_null_int_ventas_lineas_id_detalle ...................... [RUN]
+[2026-10-17T15:03:11.550+0000] {subprocess.py:93} INFO - [0m15:03:11  31 of 78 START test not_null_int_ventas_lineas_id_venta ........................ [RUN]
+[2026-10-17T15:03:11.681+0000] {subprocess.py:93} INFO - [0m15:03:11  28 of 78 PASS not_null_int_inventario_costos_id_producto ....................... [[32mPASS[0m in 0.37s]
+[2026-10-17T15:03:11.714+0000] {subprocess.py:93} INFO - [0m15:03:11  32 of 78 START test not_null_stg_categorias_id_categoria ....................... [RUN]
+[2026-10-17T15:03:11.869+0000] {subprocess.py:93} INFO - [0m15:03:11  29 of 78 PASS not_null_int_inventario_costos_id_sucursal ....................... [[32mPASS[0m in 0.39s]
+[2026-10-17T15:03:11.908+0000] {subprocess.py:93} INFO - [0m15:03:11  30 of 78 PASS not_null_int_ventas_lineas_id_detalle ............................ [[32mPASS[0m in 0.37s]
+[2026-10-17T15:03:11.927+0000] {subprocess.py:93} INFO - [0m15:03:11  33 of 78 START test not_null_stg_clientes_id_cliente ........................... [RUN]
+[2026-10-17T15:03:11.932+0000] {subprocess.py:93} INFO - [0m15:03:11  31 of 78 PASS not_null_int_ventas_lineas_id_venta .............................. [[32mPASS[0m in 0.37s]
+[2026-10-17T15:03:11.951+0000] {subprocess.py:93} INFO - [0m15:03:11  34 of 78 START test not_null_stg_devoluciones_id_devolucion .................... [RUN]
+[2026-10-17T15:03:11.999+0000] {subprocess.py:93} INFO - [0m15:03:11  35 of 78 START test not_null_stg_inventario_bodega_fecha_corte ................. [RUN]
+[2026-10-17T15:03:12.126+0000] {subprocess.py:93} INFO - [0m15:03:12  32 of 78 PASS not_null_stg_categorias_id_categoria ............................. [[32mPASS[0m in 0.40s]
+[2026-10-17T15:03:12.150+0000] {subprocess.py:93} INFO - [0m15:03:12  36 of 78 START test not_null_stg_inventario_bodega_id_producto ................. [RUN]
+[2026-10-17T15:03:12.265+0000] {subprocess.py:93} INFO - [0m15:03:12  34 of 78 PASS not_null_stg_devoluciones_id_devolucion .......................... [[32mPASS[0m in 0.30s]
+[2026-10-17T15:03:12.292+0000] {subprocess.py:93} INFO - [0m15:03:12  33 of 78 PASS not_null_stg_clientes_id_cliente ................................. [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:12.316+0000] {subprocess.py:93} INFO - [0m15:03:12  37 of 78 START test not_null_stg_inventario_bodega_id_sucursal ................. [RUN]
+[2026-10-17T15:03:12.333+0000] {subprocess.py:93} INFO - [0m15:03:12  38 of 78 START test not_null_stg_marcas_id_marca ............................... [RUN]
+[2026-10-17T15:03:12.340+0000] {subprocess.py:93} INFO - [0m15:03:12  35 of 78 PASS not_null_stg_inventario_bodega_fecha_corte ....................... [[32mPASS[0m in 0.33s]
+[2026-10-17T15:03:12.426+0000] {subprocess.py:93} INFO - [0m15:03:12  39 of 78 START test not_null_stg_metas_ventas_id_sucursal ...................... [RUN]
+[2026-10-17T15:03:12.514+0000] {subprocess.py:93} INFO - [0m15:03:12  36 of 78 PASS not_null_stg_inventario_bodega_id_producto ....................... [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:12.543+0000] {subprocess.py:93} INFO - [0m15:03:12  40 of 78 START test not_null_stg_metas_ventas_periodo .......................... [RUN]
+[2026-10-17T15:03:12.647+0000] {subprocess.py:93} INFO - [0m15:03:12  37 of 78 PASS not_null_stg_inventario_bodega_id_sucursal ....................... [[32mPASS[0m in 0.32s]
+[2026-10-17T15:03:12.683+0000] {subprocess.py:93} INFO - [0m15:03:12  41 of 78 START test not_null_stg_productos_id_producto ......................... [RUN]
+[2026-10-17T15:03:12.709+0000] {subprocess.py:93} INFO - [0m15:03:12  38 of 78 PASS not_null_stg_marcas_id_marca ..................................... [[32mPASS[0m in 0.36s]
+[2026-10-17T15:03:12.773+0000] {subprocess.py:93} INFO - [0m15:03:12  39 of 78 PASS not_null_stg_metas_ventas_id_sucursal ............................ [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:12.779+0000] {subprocess.py:93} INFO - [0m15:03:12  42 of 78 START test not_null_stg_sucursales_id_sucursal ........................ [RUN]
+[2026-10-17T15:03:12.815+0000] {subprocess.py:93} INFO - [0m15:03:12  43 of 78 START test not_null_stg_ventas_detalle_id_detalle ..................... [RUN]
+[2026-10-17T15:03:12.900+0000] {subprocess.py:93} INFO - [0m15:03:12  40 of 78 PASS not_null_stg_metas_ventas_periodo ................................ [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:12.938+0000] {subprocess.py:93} INFO - [0m15:03:12  44 of 78 START test not_null_stg_ventas_detalle_id_producto .................... [RUN]
+[2026-10-17T15:03:13.028+0000] {subprocess.py:93} INFO - [0m15:03:13  41 of 78 PASS not_null_stg_productos_id_producto ............................... [[32mPASS[0m in 0.32s]
+[2026-10-17T15:03:13.068+0000] {subprocess.py:93} INFO - [0m15:03:13  45 of 78 START test not_null_stg_ventas_detalle_id_venta ....................... [RUN]
+[2026-10-17T15:03:13.082+0000] {subprocess.py:93} INFO - [0m15:03:13  42 of 78 PASS not_null_stg_sucursales_id_sucursal .............................. [[32mPASS[0m in 0.29s]
+[2026-10-17T15:03:13.108+0000] {subprocess.py:93} INFO - [0m15:03:13  43 of 78 PASS not_null_stg_ventas_detalle_id_detalle ........................... [[32mPASS[0m in 0.26s]
+[2026-10-17T15:03:13.148+0000] {subprocess.py:93} INFO - [0m15:03:13  46 of 78 START test not_null_stg_ventas_id_venta ............................... [RUN]
+[2026-10-17T15:03:13.172+0000] {subprocess.py:93} INFO - [0m15:03:13  47 of 78 START test relationships_fct_devoluciones_producto_sk__producto_sk__ref_dim_productos_  [RUN]
+[2026-10-17T15:03:13.291+0000] {subprocess.py:93} INFO - [0m15:03:13  44 of 78 PASS not_null_stg_ventas_detalle_id_producto .......................... [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:13.335+0000] {subprocess.py:93} INFO - [0m15:03:13  48 of 78 START test relationships_fct_devoluciones_sucursal_sk__sucursal_sk__ref_dim_sucursales_  [RUN]
+[2026-10-17T15:03:13.450+0000] {subprocess.py:93} INFO - [0m15:03:13  45 of 78 PASS not_null_stg_ventas_detalle_id_venta ............................. [[32mPASS[0m in 0.36s]
+[2026-10-17T15:03:13.497+0000] {subprocess.py:93} INFO - [0m15:03:13  46 of 78 PASS not_null_stg_ventas_id_venta ..................................... [[32mPASS[0m in 0.33s]
+[2026-10-17T15:03:13.501+0000] {subprocess.py:93} INFO - [0m15:03:13  49 of 78 START test relationships_fct_inventario_fecha_sk__fecha_sk__ref_dim_fecha_  [RUN]
+[2026-10-17T15:03:13.547+0000] {subprocess.py:93} INFO - [0m15:03:13  50 of 78 START test relationships_fct_inventario_producto_sk__producto_sk__ref_dim_productos_  [RUN]
+[2026-10-17T15:03:13.555+0000] {subprocess.py:93} INFO - [0m15:03:13  47 of 78 PASS relationships_fct_devoluciones_producto_sk__producto_sk__ref_dim_productos_  [[32mPASS[0m in 0.37s]
+[2026-10-17T15:03:13.679+0000] {subprocess.py:93} INFO - [0m15:03:13  51 of 78 START test relationships_fct_inventario_sucursal_sk__sucursal_sk__ref_dim_sucursales_  [RUN]
+[2026-10-17T15:03:13.762+0000] {subprocess.py:93} INFO - [0m15:03:13  48 of 78 PASS relationships_fct_devoluciones_sucursal_sk__sucursal_sk__ref_dim_sucursales_  [[32mPASS[0m in 0.40s]
+[2026-10-17T15:03:13.815+0000] {subprocess.py:93} INFO - [0m15:03:13  52 of 78 START test relationships_fct_metas_ventas_sucursal_sk__sucursal_sk__ref_dim_sucursales_  [RUN]
+[2026-10-17T15:03:13.927+0000] {subprocess.py:93} INFO - [0m15:03:13  49 of 78 PASS relationships_fct_inventario_fecha_sk__fecha_sk__ref_dim_fecha_ .. [[32mPASS[0m in 0.40s]
+[2026-10-17T15:03:13.949+0000] {subprocess.py:93} INFO - [0m15:03:13  53 of 78 START test relationships_fct_ventas_cliente_sk__cliente_sk__ref_dim_clientes_  [RUN]
+[2026-10-17T15:03:14.042+0000] {subprocess.py:93} INFO - [0m15:03:14  50 of 78 PASS relationships_fct_inventario_producto_sk__producto_sk__ref_dim_productos_  [[32mPASS[0m in 0.46s]
+[2026-10-17T15:03:14.100+0000] {subprocess.py:93} INFO - [0m15:03:14  54 of 78 START test relationships_fct_ventas_fecha_sk__fecha_sk__ref_dim_fecha_  [RUN]
+[2026-10-17T15:03:14.115+0000] {subprocess.py:93} INFO - [0m15:03:14  51 of 78 PASS relationships_fct_inventario_sucursal_sk__sucursal_sk__ref_dim_sucursales_  [[32mPASS[0m in 0.41s]
+[2026-10-17T15:03:14.206+0000] {subprocess.py:93} INFO - [0m15:03:14  55 of 78 START test relationships_fct_ventas_producto_sk__producto_sk__ref_dim_productos_  [RUN]
+[2026-10-17T15:03:14.216+0000] {subprocess.py:93} INFO - [0m15:03:14  52 of 78 PASS relationships_fct_metas_ventas_sucursal_sk__sucursal_sk__ref_dim_sucursales_  [[32mPASS[0m in 0.40s]
+[2026-10-17T15:03:14.277+0000] {subprocess.py:93} INFO - [0m15:03:14  56 of 78 START test relationships_fct_ventas_sucursal_sk__sucursal_sk__ref_dim_sucursales_  [RUN]
+[2026-10-17T15:03:14.334+0000] {subprocess.py:93} INFO - [0m15:03:14  53 of 78 PASS relationships_fct_ventas_cliente_sk__cliente_sk__ref_dim_clientes_  [[32mPASS[0m in 0.37s]
+[2026-10-17T15:03:14.397+0000] {subprocess.py:93} INFO - [0m15:03:14  57 of 78 START test unique_dim_clientes_cliente_sk ............................. [RUN]
+[2026-10-17T15:03:14.506+0000] {subprocess.py:93} INFO - [0m15:03:14  54 of 78 PASS relationships_fct_ventas_fecha_sk__fecha_sk__ref_dim_fecha_ ...... [[32mPASS[0m in 0.39s]
+[2026-10-17T15:03:14.535+0000] {subprocess.py:93} INFO - [0m15:03:14  58 of 78 START test unique_dim_clientes_id_cliente ............................. [RUN]
+[2026-10-17T15:03:14.619+0000] {subprocess.py:93} INFO - [0m15:03:14  55 of 78 PASS relationships_fct_ventas_producto_sk__producto_sk__ref_dim_productos_  [[32mPASS[0m in 0.39s]
+[2026-10-17T15:03:14.663+0000] {subprocess.py:93} INFO - [0m15:03:14  59 of 78 START test unique_dim_fecha_fecha ..................................... [RUN]
+[2026-10-17T15:03:14.670+0000] {subprocess.py:93} INFO - [0m15:03:14  56 of 78 PASS relationships_fct_ventas_sucursal_sk__sucursal_sk__ref_dim_sucursales_  [[32mPASS[0m in 0.36s]
+[2026-10-17T15:03:14.743+0000] {subprocess.py:93} INFO - [0m15:03:14  60 of 78 START test unique_dim_fecha_fecha_sk .................................. [RUN]
+[2026-10-17T15:03:14.766+0000] {subprocess.py:93} INFO - [0m15:03:14  57 of 78 PASS unique_dim_clientes_cliente_sk ................................... [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:14.830+0000] {subprocess.py:93} INFO - [0m15:03:14  61 of 78 START test unique_dim_productos_id_producto ........................... [RUN]
+[2026-10-17T15:03:14.892+0000] {subprocess.py:93} INFO - [0m15:03:14  58 of 78 PASS unique_dim_clientes_id_cliente ................................... [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:14.931+0000] {subprocess.py:93} INFO - [0m15:03:14  62 of 78 START test unique_dim_productos_producto_sk ........................... [RUN]
+[2026-10-17T15:03:15.027+0000] {subprocess.py:93} INFO - [0m15:03:15  59 of 78 PASS unique_dim_fecha_fecha ........................................... [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:15.059+0000] {subprocess.py:93} INFO - [0m15:03:15  63 of 78 START test unique_dim_sucursales_id_sucursal .......................... [RUN]
+[2026-10-17T15:03:15.105+0000] {subprocess.py:93} INFO - [0m15:03:15  60 of 78 PASS unique_dim_fecha_fecha_sk ........................................ [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:15.177+0000] {subprocess.py:93} INFO - [0m15:03:15  64 of 78 START test unique_dim_sucursales_sucursal_sk .......................... [RUN]
+[2026-10-17T15:03:15.190+0000] {subprocess.py:93} INFO - [0m15:03:15  61 of 78 PASS unique_dim_productos_id_producto ................................. [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:15.250+0000] {subprocess.py:93} INFO - [0m15:03:15  65 of 78 START test unique_fct_devoluciones_devolucion_sk ...................... [RUN]
+[2026-10-17T15:03:15.283+0000] {subprocess.py:93} INFO - [0m15:03:15  62 of 78 PASS unique_dim_productos_producto_sk ................................. [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:15.350+0000] {subprocess.py:93} INFO - [0m15:03:15  66 of 78 START test unique_fct_inventario_inventario_sk ........................ [RUN]
+[2026-10-17T15:03:15.450+0000] {subprocess.py:93} INFO - [0m15:03:15  63 of 78 PASS unique_dim_sucursales_id_sucursal ................................ [[32mPASS[0m in 0.37s]
+[2026-10-17T15:03:15.511+0000] {subprocess.py:93} INFO - [0m15:03:15  67 of 78 START test unique_fct_metas_ventas_meta_sk ............................ [RUN]
+[2026-10-17T15:03:15.547+0000] {subprocess.py:93} INFO - [0m15:03:15  64 of 78 PASS unique_dim_sucursales_sucursal_sk ................................ [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:15.620+0000] {subprocess.py:93} INFO - [0m15:03:15  65 of 78 PASS unique_fct_devoluciones_devolucion_sk ............................ [[32mPASS[0m in 0.35s]
+[2026-10-17T15:03:15.632+0000] {subprocess.py:93} INFO - [0m15:03:15  68 of 78 START test unique_fct_ventas_venta_linea_sk ........................... [RUN]
+[2026-10-17T15:03:15.674+0000] {subprocess.py:93} INFO - [0m15:03:15  69 of 78 START test unique_int_devoluciones_detalle_id_devolucion .............. [RUN]
+[2026-10-17T15:03:15.803+0000] {subprocess.py:93} INFO - [0m15:03:15  66 of 78 PASS unique_fct_inventario_inventario_sk .............................. [[32mPASS[0m in 0.44s]
+[2026-10-17T15:03:15.860+0000] {subprocess.py:93} INFO - [0m15:03:15  70 of 78 START test unique_int_ventas_lineas_id_detalle ........................ [RUN]
+[2026-10-17T15:03:15.957+0000] {subprocess.py:93} INFO - [0m15:03:15  67 of 78 PASS unique_fct_metas_ventas_meta_sk .................................. [[32mPASS[0m in 0.43s]
+[2026-10-17T15:03:16.019+0000] {subprocess.py:93} INFO - [0m15:03:16  71 of 78 START test unique_stg_categorias_id_categoria ......................... [RUN]
+[2026-10-17T15:03:16.045+0000] {subprocess.py:93} INFO - [0m15:03:16  68 of 78 PASS unique_fct_ventas_venta_linea_sk ................................. [[32mPASS[0m in 0.40s]
+[2026-10-17T15:03:16.065+0000] {subprocess.py:93} INFO - [0m15:03:16  69 of 78 PASS unique_int_devoluciones_detalle_id_devolucion .................... [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:16.114+0000] {subprocess.py:93} INFO - [0m15:03:16  72 of 78 START test unique_stg_clientes_id_cliente ............................. [RUN]
+[2026-10-17T15:03:16.133+0000] {subprocess.py:93} INFO - [0m15:03:16  73 of 78 START test unique_stg_devoluciones_id_devolucion ...................... [RUN]
+[2026-10-17T15:03:16.312+0000] {subprocess.py:93} INFO - [0m15:03:16  70 of 78 PASS unique_int_ventas_lineas_id_detalle .............................. [[32mPASS[0m in 0.43s]
+[2026-10-17T15:03:16.340+0000] {subprocess.py:93} INFO - [0m15:03:16  74 of 78 START test unique_stg_marcas_id_marca ................................. [RUN]
+[2026-10-17T15:03:16.493+0000] {subprocess.py:93} INFO - [0m15:03:16  71 of 78 PASS unique_stg_categorias_id_categoria ............................... [[32mPASS[0m in 0.45s]
+[2026-10-17T15:03:16.537+0000] {subprocess.py:93} INFO - [0m15:03:16  72 of 78 PASS unique_stg_clientes_id_cliente ................................... [[32mPASS[0m in 0.41s]
+[2026-10-17T15:03:16.540+0000] {subprocess.py:93} INFO - [0m15:03:16  75 of 78 START test unique_stg_productos_id_producto ........................... [RUN]
+[2026-10-17T15:03:16.547+0000] {subprocess.py:93} INFO - [0m15:03:16  73 of 78 PASS unique_stg_devoluciones_id_devolucion ............................ [[32mPASS[0m in 0.40s]
+[2026-10-17T15:03:16.588+0000] {subprocess.py:93} INFO - [0m15:03:16  76 of 78 START test unique_stg_sucursales_id_sucursal .......................... [RUN]
+[2026-10-17T15:03:16.621+0000] {subprocess.py:93} INFO - [0m15:03:16  77 of 78 START test unique_stg_ventas_detalle_id_detalle ....................... [RUN]
+[2026-10-17T15:03:16.738+0000] {subprocess.py:93} INFO - [0m15:03:16  74 of 78 PASS unique_stg_marcas_id_marca ....................................... [[32mPASS[0m in 0.37s]
+[2026-10-17T15:03:16.763+0000] {subprocess.py:93} INFO - [0m15:03:16  78 of 78 START test unique_stg_ventas_id_venta ................................. [RUN]
+[2026-10-17T15:03:16.914+0000] {subprocess.py:93} INFO - [0m15:03:16  75 of 78 PASS unique_stg_productos_id_producto ................................. [[32mPASS[0m in 0.36s]
+[2026-10-17T15:03:16.955+0000] {subprocess.py:93} INFO - [0m15:03:16  77 of 78 PASS unique_stg_ventas_detalle_id_detalle ............................. [[32mPASS[0m in 0.32s]
+[2026-10-17T15:03:16.961+0000] {subprocess.py:93} INFO - [0m15:03:16  76 of 78 PASS unique_stg_sucursales_id_sucursal ................................ [[32mPASS[0m in 0.34s]
+[2026-10-17T15:03:17.040+0000] {subprocess.py:93} INFO - [0m15:03:17  78 of 78 PASS unique_stg_ventas_id_venta ....................................... [[32mPASS[0m in 0.26s]
+[2026-10-17T15:03:17.117+0000] {subprocess.py:93} INFO - [0m15:03:17
+[2026-10-17T15:03:17.122+0000] {subprocess.py:93} INFO - [0m15:03:17  Finished running 78 data tests in 0 hours 0 minutes and 9.06 seconds (9.06s).
+[2026-10-17T15:03:17.589+0000] {subprocess.py:93} INFO - [0m15:03:17
+[2026-10-17T15:03:17.593+0000] {subprocess.py:93} INFO - [0m15:03:17  [32mCompleted successfully[0m
+[2026-10-17T15:03:17.600+0000] {subprocess.py:93} INFO - [0m15:03:17
+[2026-10-17T15:03:17.606+0000] {subprocess.py:93} INFO - [0m15:03:17  Done. PASS=78 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=78
+[2026-10-17T15:03:17.614+0000] {subprocess.py:93} INFO - [0m15:03:17  [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+[2026-10-17T15:03:17.617+0000] {subprocess.py:93} INFO - Summary of encountered deprecations:
+[2026-10-17T15:03:17.618+0000] {subprocess.py:93} INFO - - MissingArgumentsPropertyInGenericTestDeprecation: 10 occurrences
+[2026-10-17T15:03:17.620+0000] {subprocess.py:93} INFO - To see all deprecation instances instead of just the first occurrence of each,
+[2026-10-17T15:03:17.621+0000] {subprocess.py:93} INFO - run command again with the `--show-all-deprecations` flag. You may also need to
+[2026-10-17T15:03:17.623+0000] {subprocess.py:93} INFO - run with `--no-partial-parse` as some deprecations are only encountered during
+[2026-10-17T15:03:17.625+0000] {subprocess.py:93} INFO - parsing.
+[2026-10-17T15:03:21.510+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-10-17T15:03:21.556+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=sgfood_elt_pipeline, task_id=dbt_test_quality, execution_date=20261016T030000, start_date=20261017T150249, end_date=20261017T150321
+[2026-10-17T15:03:21.614+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-17T15:03:21.638+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

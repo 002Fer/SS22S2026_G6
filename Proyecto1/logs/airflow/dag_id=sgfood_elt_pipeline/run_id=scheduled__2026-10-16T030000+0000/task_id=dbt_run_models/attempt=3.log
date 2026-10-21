@@ -1,0 +1,75 @@
+[2026-10-17T17:57:57.442+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.dbt_run_models scheduled__2026-10-16T03:00:00+00:00 [queued]>
+[2026-10-17T17:57:57.464+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.dbt_run_models scheduled__2026-10-16T03:00:00+00:00 [queued]>
+[2026-10-17T17:57:57.466+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 5
+[2026-10-17T17:57:57.535+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): dbt_run_models> on 2026-10-16 03:00:00+00:00
+[2026-10-17T17:57:57.551+0000] {standard_task_runner.py:60} INFO - Started process 826 to run task
+[2026-10-17T17:57:57.560+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'dbt_run_models', 'scheduled__2026-10-16T03:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmpyo9miuuc']
+[2026-10-17T17:57:57.569+0000] {standard_task_runner.py:88} INFO - Job 16: Subtask dbt_run_models
+[2026-10-17T17:57:57.633+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-17T17:57:57.743+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.dbt_run_models scheduled__2026-10-16T03:00:00+00:00 [running]> on host 5c6267f2a47e
+[2026-10-17T17:57:57.987+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='dbt_run_models' AIRFLOW_CTX_EXECUTION_DATE='2026-10-16T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-16T03:00:00+00:00'
+[2026-10-17T17:57:57.993+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-17T17:57:57.995+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/airflow/project/dbt/sgfood_dbt && dbt run --profiles-dir .']
+[2026-10-17T17:57:58.032+0000] {subprocess.py:86} INFO - Output:
+[2026-10-17T17:58:06.779+0000] {subprocess.py:93} INFO - [0m17:58:06  Running with dbt=1.13.0-b1
+[2026-10-17T17:58:08.467+0000] {subprocess.py:93} INFO - [0m17:58:08  Registered adapter: postgres=1.11.0
+[2026-10-17T17:58:10.473+0000] {subprocess.py:93} INFO - [0m17:58:10  Found 23 models, 78 data tests, 12 sources, 478 macros
+[2026-10-17T17:58:10.498+0000] {subprocess.py:93} INFO - [0m17:58:10
+[2026-10-17T17:58:10.504+0000] {subprocess.py:93} INFO - [0m17:58:10  Concurrency: 4 threads (target='dev')
+[2026-10-17T17:58:10.511+0000] {subprocess.py:93} INFO - [0m17:58:10
+[2026-10-17T17:58:11.303+0000] {subprocess.py:93} INFO - [0m17:58:11  1 of 23 START sql table model marts.dim_fecha .................................. [RUN]
+[2026-10-17T17:58:11.309+0000] {subprocess.py:93} INFO - [0m17:58:11  2 of 23 START sql view model staging.stg_categorias ............................ [RUN]
+[2026-10-17T17:58:11.315+0000] {subprocess.py:93} INFO - [0m17:58:11  3 of 23 START sql view model staging.stg_clientes .............................. [RUN]
+[2026-10-17T17:58:11.321+0000] {subprocess.py:93} INFO - [0m17:58:11  4 of 23 START sql view model staging.stg_devoluciones .......................... [RUN]
+[2026-10-17T17:58:12.810+0000] {subprocess.py:93} INFO - [0m17:58:12  2 of 23 OK created sql view model staging.stg_categorias ....................... [[32mCREATE VIEW[0m in 1.43s]
+[2026-10-17T17:58:12.844+0000] {subprocess.py:93} INFO - [0m17:58:12  3 of 23 OK created sql view model staging.stg_clientes ......................... [[32mCREATE VIEW[0m in 1.47s]
+[2026-10-17T17:58:12.852+0000] {subprocess.py:93} INFO - [0m17:58:12  1 of 23 OK created sql table model marts.dim_fecha ............................. [[32mSELECT 1096[0m in 1.49s]
+[2026-10-17T17:58:12.858+0000] {subprocess.py:93} INFO - [0m17:58:12  4 of 23 OK created sql view model staging.stg_devoluciones ..................... [[32mCREATE VIEW[0m in 1.47s]
+[2026-10-17T17:58:12.892+0000] {subprocess.py:93} INFO - [0m17:58:12  5 of 23 START sql view model staging.stg_inventario_bodega ..................... [RUN]
+[2026-10-17T17:58:12.923+0000] {subprocess.py:93} INFO - [0m17:58:12  6 of 23 START sql view model staging.stg_marcas ................................ [RUN]
+[2026-10-17T17:58:12.928+0000] {subprocess.py:93} INFO - [0m17:58:12  7 of 23 START sql view model staging.stg_metas_ventas .......................... [RUN]
+[2026-10-17T17:58:12.934+0000] {subprocess.py:93} INFO - [0m17:58:12  8 of 23 START sql view model staging.stg_productos ............................. [RUN]
+[2026-10-17T17:58:13.751+0000] {subprocess.py:93} INFO - [0m17:58:13  5 of 23 OK created sql view model staging.stg_inventario_bodega ................ [[32mCREATE VIEW[0m in 0.80s]
+[2026-10-17T17:58:13.759+0000] {subprocess.py:93} INFO - [0m17:58:13  6 of 23 OK created sql view model staging.stg_marcas ........................... [[32mCREATE VIEW[0m in 0.79s]
+[2026-10-17T17:58:13.791+0000] {subprocess.py:93} INFO - [0m17:58:13  7 of 23 OK created sql view model staging.stg_metas_ventas ..................... [[32mCREATE VIEW[0m in 0.82s]
+[2026-10-17T17:58:13.820+0000] {subprocess.py:93} INFO - [0m17:58:13  8 of 23 OK created sql view model staging.stg_productos ........................ [[32mCREATE VIEW[0m in 0.84s]
+[2026-10-17T17:58:13.827+0000] {subprocess.py:93} INFO - [0m17:58:13  9 of 23 START sql view model staging.stg_promociones ........................... [RUN]
+[2026-10-17T17:58:13.835+0000] {subprocess.py:93} INFO - [0m17:58:13  10 of 23 START sql view model staging.stg_proveedores_precios .................. [RUN]
+[2026-10-17T17:58:13.864+0000] {subprocess.py:93} INFO - [0m17:58:13  11 of 23 START sql view model staging.stg_sucursales ........................... [RUN]
+[2026-10-17T17:58:13.893+0000] {subprocess.py:93} INFO - [0m17:58:13  12 of 23 START sql view model staging.stg_ventas ............................... [RUN]
+[2026-10-17T17:58:14.710+0000] {subprocess.py:93} INFO - [0m17:58:14  10 of 23 OK created sql view model staging.stg_proveedores_precios ............. [[32mCREATE VIEW[0m in 0.80s]
+[2026-10-17T17:58:14.734+0000] {subprocess.py:93} INFO - [0m17:58:14  9 of 23 OK created sql view model staging.stg_promociones ...................... [[32mCREATE VIEW[0m in 0.85s]
+[2026-10-17T17:58:14.753+0000] {subprocess.py:93} INFO - [0m17:58:14  12 of 23 OK created sql view model staging.stg_ventas .......................... [[32mCREATE VIEW[0m in 0.79s]
+[2026-10-17T17:58:14.761+0000] {subprocess.py:93} INFO - [0m17:58:14  11 of 23 OK created sql view model staging.stg_sucursales ...................... [[32mCREATE VIEW[0m in 0.84s]
+[2026-10-17T17:58:14.815+0000] {subprocess.py:93} INFO - [0m17:58:14  13 of 23 START sql view model staging.stg_ventas_detalle ....................... [RUN]
+[2026-10-17T17:58:14.846+0000] {subprocess.py:93} INFO - [0m17:58:14  14 of 23 START sql table model marts.dim_clientes .............................. [RUN]
+[2026-10-17T17:58:14.860+0000] {subprocess.py:93} INFO - [0m17:58:14  15 of 23 START sql table model marts.fct_metas_ventas .......................... [RUN]
+[2026-10-17T17:58:14.867+0000] {subprocess.py:93} INFO - [0m17:58:14  16 of 23 START sql table model marts.dim_productos ............................. [RUN]
+[2026-10-17T17:58:15.712+0000] {subprocess.py:93} INFO - [0m17:58:15  13 of 23 OK created sql view model staging.stg_ventas_detalle .................. [[32mCREATE VIEW[0m in 0.83s]
+[2026-10-17T17:58:15.796+0000] {subprocess.py:93} INFO - [0m17:58:15  17 of 23 START sql view model intermediate.int_inventario_costos ............... [RUN]
+[2026-10-17T17:58:15.838+0000] {subprocess.py:93} INFO - [0m17:58:15  14 of 23 OK created sql table model marts.dim_clientes ......................... [[32mSELECT 250[0m in 0.93s]
+[2026-10-17T17:58:15.849+0000] {subprocess.py:93} INFO - [0m17:58:15  15 of 23 OK created sql table model marts.fct_metas_ventas ..................... [[32mSELECT 48[0m in 0.95s]
+[2026-10-17T17:58:15.870+0000] {subprocess.py:93} INFO - [0m17:58:15  16 of 23 OK created sql table model marts.dim_productos ........................ [[32mSELECT 80[0m in 0.96s]
+[2026-10-17T17:58:15.915+0000] {subprocess.py:93} INFO - [0m17:58:15  18 of 23 START sql view model intermediate.int_devoluciones_detalle ............ [RUN]
+[2026-10-17T17:58:15.929+0000] {subprocess.py:93} INFO - [0m17:58:15  19 of 23 START sql table model marts.dim_sucursales ............................ [RUN]
+[2026-10-17T17:58:15.941+0000] {subprocess.py:93} INFO - [0m17:58:15  20 of 23 START sql view model intermediate.int_ventas_lineas ................... [RUN]
+[2026-10-17T17:58:16.596+0000] {subprocess.py:93} INFO - [0m17:58:16  17 of 23 OK created sql view model intermediate.int_inventario_costos .......... [[32mCREATE VIEW[0m in 0.73s]
+[2026-10-17T17:58:16.629+0000] {subprocess.py:93} INFO - [0m17:58:16  20 of 23 OK created sql view model intermediate.int_ventas_lineas .............. [[32mCREATE VIEW[0m in 0.64s]
+[2026-10-17T17:58:16.645+0000] {subprocess.py:93} INFO - [0m17:58:16  18 of 23 OK created sql view model intermediate.int_devoluciones_detalle ....... [[32mCREATE VIEW[0m in 0.68s]
+[2026-10-17T17:58:16.678+0000] {subprocess.py:93} INFO - [0m17:58:16  21 of 23 START sql table model marts.fct_inventario ............................ [RUN]
+[2026-10-17T17:58:16.710+0000] {subprocess.py:93} INFO - [0m17:58:16  22 of 23 START sql table model marts.fct_ventas ................................ [RUN]
+[2026-10-17T17:58:16.724+0000] {subprocess.py:93} INFO - [0m17:58:16  23 of 23 START sql table model marts.fct_devoluciones .......................... [RUN]
+[2026-10-17T17:58:16.828+0000] {subprocess.py:93} INFO - [0m17:58:16  19 of 23 OK created sql table model marts.dim_sucursales ....................... [[32mSELECT 6[0m in 0.84s]
+[2026-10-17T17:58:17.366+0000] {subprocess.py:93} INFO - [0m17:58:17  23 of 23 OK created sql table model marts.fct_devoluciones ..................... [[32mSELECT 80[0m in 0.59s]
+[2026-10-17T17:58:17.539+0000] {subprocess.py:93} INFO - [0m17:58:17  21 of 23 OK created sql table model marts.fct_inventario ....................... [[32mSELECT 3840[0m in 0.82s]
+[2026-10-17T17:58:23.406+0000] {subprocess.py:93} INFO - [0m17:58:23  22 of 23 OK created sql table model marts.fct_ventas ........................... [[32mSELECT 3209[0m in 0.80s]
+[2026-10-17T17:58:23.534+0000] {subprocess.py:93} INFO - [0m17:58:23
+[2026-10-17T17:58:23.539+0000] {subprocess.py:93} INFO - [0m17:58:23  Finished running 8 table models, 15 view models in 0 hours 0 minutes and 13.02 seconds (13.02s).
+[2026-10-17T17:58:24.088+0000] {subprocess.py:93} INFO - [0m17:58:24
+[2026-10-17T17:58:24.094+0000] {subprocess.py:93} INFO - [0m17:58:24  [32mCompleted successfully[0m
+[2026-10-17T17:58:24.100+0000] {subprocess.py:93} INFO - [0m17:58:24
+[2026-10-17T17:58:24.106+0000] {subprocess.py:93} INFO - [0m17:58:24  Done. PASS=23 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=23
+[2026-10-17T17:58:30.714+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-10-17T17:58:30.773+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=sgfood_elt_pipeline, task_id=dbt_run_models, execution_date=20261016T030000, start_date=20261017T175757, end_date=20261017T175830
+[2026-10-17T17:58:30.873+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-17T17:58:30.930+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,34 @@
+[2026-10-17T17:57:43.647+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.validate_raw_data scheduled__2026-10-16T03:00:00+00:00 [queued]>
+[2026-10-17T17:57:43.673+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.validate_raw_data scheduled__2026-10-16T03:00:00+00:00 [queued]>
+[2026-10-17T17:57:43.675+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 5
+[2026-10-17T17:57:43.749+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): validate_raw_data> on 2026-10-16 03:00:00+00:00
+[2026-10-17T17:57:43.767+0000] {standard_task_runner.py:60} INFO - Started process 808 to run task
+[2026-10-17T17:57:43.782+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'validate_raw_data', 'scheduled__2026-10-16T03:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmpws41lcfz']
+[2026-10-17T17:57:43.790+0000] {standard_task_runner.py:88} INFO - Job 15: Subtask validate_raw_data
+[2026-10-17T17:57:43.851+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-17T17:57:43.955+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.validate_raw_data scheduled__2026-10-16T03:00:00+00:00 [running]> on host 5c6267f2a47e
+[2026-10-17T17:57:44.188+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='validate_raw_data' AIRFLOW_CTX_EXECUTION_DATE='2026-10-16T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-16T03:00:00+00:00'
+[2026-10-17T17:57:44.195+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-17T17:57:44.196+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main validate']
+[2026-10-17T17:57:44.227+0000] {subprocess.py:86} INFO - Output:
+[2026-10-17T17:57:45.687+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,686 | INFO | src.database | Conexión exitosa a PostgreSQL transaccional (source_db:5432/sgfood_source)
+[2026-10-17T17:57:45.727+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,726 | INFO | src.database | Conexión exitosa a PostgreSQL Data Warehouse (warehouse_db:5432/sgfood_dw)
+[2026-10-17T17:57:45.757+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,757 | INFO | src.pipeline | Schema raw y tablas disponibles
+[2026-10-17T17:57:45.819+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,818 | INFO | src.pipeline | Validación raw.sucursal: 6 registros
+[2026-10-17T17:57:45.821+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,819 | INFO | src.pipeline | Validación raw.categoria: 8 registros
+[2026-10-17T17:57:45.823+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,819 | INFO | src.pipeline | Validación raw.marca: 10 registros
+[2026-10-17T17:57:45.826+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,819 | INFO | src.pipeline | Validación raw.producto: 80 registros
+[2026-10-17T17:57:45.828+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,819 | INFO | src.pipeline | Validación raw.cliente: 250 registros
+[2026-10-17T17:57:45.830+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,819 | INFO | src.pipeline | Validación raw.venta: 1200 registros
+[2026-10-17T17:57:45.832+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,820 | INFO | src.pipeline | Validación raw.venta_detalle: 3209 registros
+[2026-10-17T17:57:45.834+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,820 | INFO | src.pipeline | Validación raw.inventario_bodega: 3840 registros
+[2026-10-17T17:57:45.835+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,820 | INFO | src.pipeline | Validación raw.proveedores_precios: 103 registros
+[2026-10-17T17:57:45.837+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,820 | INFO | src.pipeline | Validación raw.promociones: 30 registros
+[2026-10-17T17:57:45.839+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,820 | INFO | src.pipeline | Validación raw.metas_ventas: 48 registros
+[2026-10-17T17:57:45.840+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,820 | INFO | src.pipeline | Validación raw.devoluciones: 80 registros
+[2026-10-17T17:57:45.841+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,820 | INFO | src.pipeline | Validación completada: 12 tablas correctas
+[2026-10-17T17:57:45.844+0000] {subprocess.py:93} INFO - 2026-10-17 17:57:45,821 | INFO | __main__ | Comando validate finalizado correctamente
+[2026-10-17T17:57:45.951+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-10-17T17:57:46.030+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=sgfood_elt_pipeline, task_id=validate_raw_data, execution_date=20261016T030000, start_date=20261017T175743, end_date=20261017T175746
+[2026-10-17T17:57:46.091+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-17T17:57:46.177+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

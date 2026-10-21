@@ -1,0 +1,52 @@
+[2026-10-17T14:40:32.527+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_csv_to_raw scheduled__2026-10-16T03:00:00+00:00 [queued]>
+[2026-10-17T14:40:32.547+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_csv_to_raw scheduled__2026-10-16T03:00:00+00:00 [queued]>
+[2026-10-17T14:40:32.548+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-17T14:40:32.582+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_csv_to_raw> on 2026-10-16 03:00:00+00:00
+[2026-10-17T14:40:32.595+0000] {standard_task_runner.py:60} INFO - Started process 195 to run task
+[2026-10-17T14:40:32.603+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'load_csv_to_raw', 'scheduled__2026-10-16T03:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmpwiv1xld1']
+[2026-10-17T14:40:32.611+0000] {standard_task_runner.py:88} INFO - Job 4: Subtask load_csv_to_raw
+[2026-10-17T14:40:32.670+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-17T14:40:32.761+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.load_csv_to_raw scheduled__2026-10-16T03:00:00+00:00 [running]> on host dfed7b346d9a
+[2026-10-17T14:40:32.927+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_csv_to_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-10-16T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-16T03:00:00+00:00'
+[2026-10-17T14:40:32.932+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-17T14:40:32.934+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main load-csv']
+[2026-10-17T14:40:32.959+0000] {subprocess.py:86} INFO - Output:
+[2026-10-17T14:40:34.196+0000] {subprocess.py:93} INFO - 2026-10-17 14:40:34,195 | INFO | src.database | Conexión exitosa a PostgreSQL Data Warehouse (warehouse_db:5432/sgfood_dw)
+[2026-10-17T14:40:34.249+0000] {subprocess.py:93} INFO - 2026-10-17 14:40:34,248 | INFO | src.pipeline | Schema raw y tablas disponibles
+[2026-10-17T14:40:34.671+0000] {subprocess.py:93} INFO - 2026-10-17 14:40:34,670 | INFO | src.pipeline | raw.inventario_bodega: 3840 registros cargados
+[2026-10-17T14:40:34.759+0000] {subprocess.py:93} INFO - 2026-10-17 14:40:34,756 | INFO | src.pipeline | raw.proveedores_precios: 103 registros cargados
+[2026-10-17T14:40:34.839+0000] {subprocess.py:93} INFO - 2026-10-17 14:40:34,839 | INFO | src.pipeline | raw.promociones: 30 registros cargados
+[2026-10-17T14:40:34.899+0000] {subprocess.py:93} INFO - 2026-10-17 14:40:34,898 | INFO | src.pipeline | raw.metas_ventas: 48 registros cargados
+[2026-10-17T14:40:34.949+0000] {subprocess.py:93} INFO - 2026-10-17 14:40:34,949 | INFO | src.pipeline | raw.devoluciones: 80 registros cargados
+[2026-10-17T14:40:34.957+0000] {subprocess.py:93} INFO - 2026-10-17 14:40:34,956 | INFO | src.pipeline | Carga CSV confirmada. batch_id=04e9bbb4-34e0-4448-a651-bbecd574399b
+[2026-10-17T14:40:34.958+0000] {subprocess.py:93} INFO - 2026-10-17 14:40:34,957 | INFO | __main__ | Comando load-csv finalizado correctamente
+[2026-10-17T14:40:35.050+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-10-17T14:40:35.100+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=sgfood_elt_pipeline, task_id=load_csv_to_raw, execution_date=20261016T030000, start_date=20261017T144032, end_date=20261017T144035
+[2026-10-17T14:40:35.189+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-17T14:40:35.245+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-10-17T15:00:07.123+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_csv_to_raw scheduled__2026-10-16T03:00:00+00:00 [queued]>
+[2026-10-17T15:00:07.173+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: sgfood_elt_pipeline.load_csv_to_raw scheduled__2026-10-16T03:00:00+00:00 [queued]>
+[2026-10-17T15:00:07.185+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-17T15:00:07.244+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): load_csv_to_raw> on 2026-10-16 03:00:00+00:00
+[2026-10-17T15:00:07.267+0000] {standard_task_runner.py:60} INFO - Started process 195 to run task
+[2026-10-17T15:00:07.277+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'sgfood_elt_pipeline', 'load_csv_to_raw', 'scheduled__2026-10-16T03:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/sgfood_elt_dag.py', '--cfg-path', '/tmp/tmpmphzl8wg']
+[2026-10-17T15:00:07.286+0000] {standard_task_runner.py:88} INFO - Job 4: Subtask load_csv_to_raw
+[2026-10-17T15:00:07.355+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.11/site-packages/airflow/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2026-10-17T15:00:07.461+0000] {task_command.py:423} INFO - Running <TaskInstance: sgfood_elt_pipeline.load_csv_to_raw scheduled__2026-10-16T03:00:00+00:00 [running]> on host 5c6267f2a47e
+[2026-10-17T15:00:07.710+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='sgfood_team' AIRFLOW_CTX_DAG_ID='sgfood_elt_pipeline' AIRFLOW_CTX_TASK_ID='load_csv_to_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-10-16T03:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-10-16T03:00:00+00:00'
+[2026-10-17T15:00:07.717+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-10-17T15:00:07.719+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python -m src.main load-csv']
+[2026-10-17T15:00:07.747+0000] {subprocess.py:86} INFO - Output:
+[2026-10-17T15:00:08.900+0000] {subprocess.py:93} INFO - 2026-10-17 15:00:08,899 | INFO | src.database | Conexión exitosa a PostgreSQL Data Warehouse (warehouse_db:5432/sgfood_dw)
+[2026-10-17T15:00:08.925+0000] {subprocess.py:93} INFO - 2026-10-17 15:00:08,925 | INFO | src.pipeline | Schema raw y tablas disponibles
+[2026-10-17T15:00:09.175+0000] {subprocess.py:93} INFO - 2026-10-17 15:00:09,175 | INFO | src.pipeline | raw.inventario_bodega: 3840 registros cargados
+[2026-10-17T15:00:09.197+0000] {subprocess.py:93} INFO - 2026-10-17 15:00:09,197 | INFO | src.pipeline | raw.proveedores_precios: 103 registros cargados
+[2026-10-17T15:00:09.219+0000] {subprocess.py:93} INFO - 2026-10-17 15:00:09,218 | INFO | src.pipeline | raw.promociones: 30 registros cargados
+[2026-10-17T15:00:09.242+0000] {subprocess.py:93} INFO - 2026-10-17 15:00:09,241 | INFO | src.pipeline | raw.metas_ventas: 48 registros cargados
+[2026-10-17T15:00:09.266+0000] {subprocess.py:93} INFO - 2026-10-17 15:00:09,266 | INFO | src.pipeline | raw.devoluciones: 80 registros cargados
+[2026-10-17T15:00:09.275+0000] {subprocess.py:93} INFO - 2026-10-17 15:00:09,274 | INFO | src.pipeline | Carga CSV confirmada. batch_id=54a7fa1c-4d1a-4a0d-85b8-d38f85414837
+[2026-10-17T15:00:09.277+0000] {subprocess.py:93} INFO - 2026-10-17 15:00:09,275 | INFO | __main__ | Comando load-csv finalizado correctamente
+[2026-10-17T15:00:09.387+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-10-17T15:00:09.492+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=sgfood_elt_pipeline, task_id=load_csv_to_raw, execution_date=20261016T030000, start_date=20261017T150007, end_date=20261017T150009
+[2026-10-17T15:00:09.597+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-17T15:00:09.660+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
