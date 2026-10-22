@@ -57,3 +57,17 @@ Proyecto_2/
 ```
 
 Los bloques SQL de exploración y optimización se ejecutan por separado. La tabla `viajes_limpios` ya fue creada; `02_limpieza.sql` conserva la sentencia de creación para reproducir el proceso en un dataset nuevo. Las capturas están identificadas y enlazadas en la [sección de evidencias](docs/integrante1.md#evidencias-revisadas).
+
+## Dashboard y visualización
+
+El dashboard del proyecto se desarrolló con Looker Studio utilizando datos procesados en BigQuery.
+
+Incluye:
+- Evolución mensual de viajes.
+- Distribución por tipo de pago.
+- Top 10 zonas de recogida.
+- Comparación de duración real y predicha de los modelos.
+
+**Documentación técnica:** [`docs/Integrante3.md`](docs/integrante3.md)
+
+**Dashboard:** [Abrir informe de Looker Studio](https://datastudio.google.com/u/4/reporting/75bae33d-f682-4a09-8436-ba599f8e2afb/page/FGqBG/edit)
